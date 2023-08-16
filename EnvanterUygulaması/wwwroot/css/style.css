@@ -1,0 +1,53 @@
+﻿.altbaslik {
+    margin-left: 30px; /* Açılır başlıkların ana başlıklardan önceki boşluğunu ayarla */
+}
+
+.grupbaslik {
+    margin-left: 10px;
+}
+
+.custom-sidebar {
+    background-color: rgb(53, 53, 65); /* İstediğiniz arka plan rengini burada belirtin */
+}
+
+.baslik {
+    color: white;
+}
+.btn-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.seffaf-baslik {
+    color: rgb(144, 144, 146);
+}
+
+.dropdown-menu {
+    background-color: rgb(33, 37, 41); 
+    color: white;
+}
+
+.dropdown-item {
+    color: #ffffff;
+}
+
+.dark-navbar {
+    background-color: rgb(18, 20, 23);
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #ff9900;
+}
+
+.btn-turuncu {
+    background-color: #ff9900;
+}
+
+    .btn-turuncu:hover, .btn-turuncu:focus {
+        background-color: rgb(33, 37, 41);
+    }
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: #ff9900;
+}
