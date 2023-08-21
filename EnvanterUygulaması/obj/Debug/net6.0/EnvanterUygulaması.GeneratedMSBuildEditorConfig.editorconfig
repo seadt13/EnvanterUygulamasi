@@ -16,12 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = c:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/sedat/source/repos/EnvanterUygulaması/EnvanterUygulaması/Views/Home/DonanimEkle.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEb25hbmltRWtsZS5jc2h0bWw=
+[c:/Users/sedat/source/repos/EnvanterUygulaması/EnvanterUygulaması/Views/Donanim/DonanimEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYW5pbVxEb25hbmltRWtsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/sedat/source/repos/EnvanterUygulaması/EnvanterUygulaması/Views/Home/DonanimListe.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEb25hbmltTGlzdGUuY3NodG1s
+[c:/Users/sedat/source/repos/EnvanterUygulaması/EnvanterUygulaması/Views/Donanim/DonanimListe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYW5pbVxEb25hbmltTGlzdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/sedat/source/repos/EnvanterUygulaması/EnvanterUygulaması/Views/Donanim/EkledigimDonanimlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYW5pbVxFa2xlZGlnaW1Eb25hbmltbGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/sedat/source/repos/EnvanterUygulaması/EnvanterUygulaması/Views/Home/Index.cshtml]

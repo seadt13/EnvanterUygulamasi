@@ -23,7 +23,6 @@ namespace EnvanterUygulaması.Models
         public DbSet<loglar> Loglar { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<Yazilimlar>()
                 .HasOne(y => y.YazilimMarka)
                 .WithOne(ym => ym.Yazilim)
@@ -38,6 +37,11 @@ namespace EnvanterUygulaması.Models
                 .HasOne(d => d.UstModel)
                 .WithOne(um => um.Donanim)
                 .HasForeignKey<Donanimlar>(d => d.UstModelID);
+
+            modelBuilder.Entity<Donanimlar>()
+                .HasOne(d => d.AltModel)
+                .WithOne(am => am.Donanim)
+                .HasForeignKey<Donanimlar>(d => d.AltModelID);
 
             modelBuilder.Entity<UstModeller>()
                .HasMany(um => um.AltModel)

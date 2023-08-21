@@ -8,5 +8,6 @@
         public UstModeller UstModel { get; set; }
         public string Adi { get; set; }
         public string Durumu { get; set; }
+        public Donanimlar Donanim { get; set; }
     }
 }

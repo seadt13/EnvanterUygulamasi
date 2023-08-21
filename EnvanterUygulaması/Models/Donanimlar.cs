@@ -17,6 +17,7 @@ namespace EnvanterUygulaması.Models
         public int UstModelID { get; set; }
         public UstModeller UstModel { get; set; }
         public int AltModelID { get; set; }
+        public AltModeller AltModel { get; set; }
         public string MacAdresi { get; set; }
         public string SeriNo { get; set; }
         public string Durumu { get; set; }

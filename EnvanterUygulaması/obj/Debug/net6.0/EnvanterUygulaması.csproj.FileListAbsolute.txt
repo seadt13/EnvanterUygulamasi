@@ -5,7 +5,6 @@ C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\bin\Debug\ne
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\bin\Debug\net6.0\EnvanterUygulaması.deps.json
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\bin\Debug\net6.0\EnvanterUygulaması.runtimeconfig.json
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\bin\Debug\net6.0\EnvanterUygulaması.dll
-C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\bin\Debug\net6.0\ref\EnvanterUygulaması.dll
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\bin\Debug\net6.0\EnvanterUygulaması.pdb
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\bin\Debug\net6.0\Azure.Core.dll
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\bin\Debug\net6.0\Azure.Identity.dll
@@ -80,3 +79,9 @@ C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\ne
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\ref\EnvanterUygulaması.dll
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\EnvanterUygulaması.pdb
 C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\EnvanterUygulaması.genruntimeconfig.cache
+C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\staticwebassets\msbuild.EnvanterUygulaması.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\staticwebassets\msbuild.build.EnvanterUygulaması.props
+C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.EnvanterUygulaması.props
+C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.EnvanterUygulaması.props
+C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\sedat\source\repos\EnvanterUygulaması\EnvanterUygulaması\obj\Debug\net6.0\refint\EnvanterUygulaması.dll

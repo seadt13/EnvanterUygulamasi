@@ -13,10 +13,19 @@
 .baslik {
     color: white;
 }
-.btn-group {
-    display: flex;
+/*.btn-group {
+    display: inline-flex;
     justify-content: flex-end;
     align-items: center;
+}
+*/
+.rounded-button {
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 10px; /* Buradaki değeri istediğiniz gibi ayarlayabilirsiniz */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .seffaf-baslik {
@@ -42,12 +51,45 @@
 
 .btn-turuncu {
     background-color: #ff9900;
+    
 }
 
-    .btn-turuncu:hover, .btn-turuncu:focus {
-        background-color: rgb(33, 37, 41);
-    }
+.btn-turuncu:hover, .btn-turuncu:focus {
+    background-color: #cc7a00;
+}
 
 .dropdown-item:hover, .dropdown-item:focus {
     background-color: #ff9900;
+}
+#btnClear {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.button-container{
+    display:flex;
+}
+.col-md-3 {
+    display: flex;
+    align-items: center;
+}
+
+    .col-md-3 select, .col-md-3 label {
+        margin-right: 10px;
+    }
+
+        .col-md-3 select.custom-select {
+            width: 150px; /* Dilediğiniz genişliği burada belirleyebilirsiniz */
+            margin-right: 10px;
+        }
+
+.custom-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-class {
+    color: red;
+    align-content: end;
 }
