@@ -1,4 +1,6 @@
 using EnvanterUygulamasý.Models;
+using EnvanterUygulamasý.Repositories.Abstract;
+using EnvanterUygulamasý.Repositories.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,13 +15,14 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
-
 // Diðer hizmetleri ekle
 builder.Services.AddControllersWithViews();
 
+// DonanimRepository'yi IGenericRepository<Donanimlar> arayüzüne enjekte et
+builder.Services.AddScoped<IGenericRepository<Donanimlar>, DonanimRepository>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

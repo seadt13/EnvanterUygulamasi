@@ -1,6 +1,4 @@
-﻿using EnvanterUygulaması.Models;
-
-namespace EnvanterUygulaması.ViewModels
+﻿namespace EnvanterUygulaması.Models
 {
     public class DonanimViewModel
     {
@@ -23,7 +21,5 @@ namespace EnvanterUygulaması.ViewModels
         public string EkleyenKullanici { get; set; }
         public string Birim { get; set; }
         public string? Aciklama { get; set; }
-        //Kullanicilar icin foreign key
-        
     }
 }

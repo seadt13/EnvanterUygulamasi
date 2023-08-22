@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sedat\\source\\repos\\EnvanterUygulaması\\EnvanterUygulaması\\EnvanterUygulaması.csproj": {}
+    "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\EnvanterUygulaması.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sedat\\source\\repos\\EnvanterUygulaması\\EnvanterUygulaması\\EnvanterUygulaması.csproj": {
+    "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\EnvanterUygulaması.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sedat\\source\\repos\\EnvanterUygulaması\\EnvanterUygulaması\\EnvanterUygulaması.csproj",
+        "projectUniqueName": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\EnvanterUygulaması.csproj",
         "projectName": "EnvanterUygulaması",
-        "projectPath": "C:\\Users\\sedat\\source\\repos\\EnvanterUygulaması\\EnvanterUygulaması\\EnvanterUygulaması.csproj",
+        "projectPath": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\EnvanterUygulaması.csproj",
         "packagesPath": "C:\\Users\\sedat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sedat\\source\\repos\\EnvanterUygulaması\\EnvanterUygulaması\\obj\\",
+        "outputPath": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sedat\\AppData\\Roaming\\NuGet\\NuGet.Config",

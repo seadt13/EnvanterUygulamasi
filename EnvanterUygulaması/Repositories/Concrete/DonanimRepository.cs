@@ -14,10 +14,10 @@ namespace EnvanterUygulaması.Repositories.Concrete
             _dbSet = _context.Donanimlar;
         }
 
-        public Task<Donanimlar> AdetSay(int MarkaID, int UstModelID, int AltModelID)
-        {
-            //return 
-        }
+        //public Task<Donanimlar> AdetSay(int MarkaID, int UstModelID, int AltModelID)
+        //{
+        //    //return 
+        //}
     }
 
 }

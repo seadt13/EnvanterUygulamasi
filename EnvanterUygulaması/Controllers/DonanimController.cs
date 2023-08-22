@@ -1,64 +1,59 @@
 ﻿using EnvanterUygulaması.Models;
-using EnvanterUygulaması.Repositories;
 using EnvanterUygulaması.Repositories.Abstract;
-using EnvanterUygulaması.Repositories.Concrete;
-using EnvanterUygulaması.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnvanterUygulaması.Controllers
 {
     public class DonanimController : Controller
     {
-        IDonanimRepository _donanimRepository;
+        private readonly IGenericRepository<Donanimlar> _donanimRepository;
 
-        public DonanimController(IDonanimRepository donanimRepository)
+        public DonanimController(IGenericRepository<Donanimlar> donanimRepository)
         {
             _donanimRepository = donanimRepository;
         }
-        public IActionResult DonanimEkle()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult DonanimEkle(Donanimlar donanim)
-        {
-            //_donanimRepository.Add(donanim);
-            return RedirectToAction("EkledigimDonanimlar");
-        }
 
-        public IActionResult EkledigimDonanimlar()
+        public async Task<IActionResult> DonanimListe()
         {
-            return View();
-        }
-
-        public IActionResult DonanimListe()
-        {
-            var donanimList = _donanimRepository.TumunuGetir(includeProperties: );
-            var donanimViewModelList = donanimList.Select(d => new DonanimViewModel
+            var donanimList = await _donanimRepository.GetAllAsync();
+            var donanimViewModel = donanimList.Select(d => new DonanimViewModel
             {
                 id = d.id,
-                Turu = d.DonanimTurleri,
-                AltTuru = d.DonanimAltTuru,
-                Marka = d.DonanimMarka,
-                UstModel = d.UstModel,
-                AltModel = d.AltModel,
+                Turu = d.DonanimTuru?.Adi,
+                AltTuru = d.DonanimAltTuru?.Adi,
+                Marka = d.DonanimMarka?.Adi,
+                UstModel = d.UstModel?.Adi,
+                AltModel = d.AltModel?.Adi,
                 MacAdresi = d.MacAdresi,
                 SeriNo = d.SeriNo,
                 Durumu = d.Durumu,
-                GarantiSuresi = d.GarantiSuresi,
                 AlimTarihi = d.AlimTarihi,
+                GarantiSuresi = d.GarantiSuresi,
                 Adedi = d.Adedi,
                 Poe = d.Poe,
                 BaglantiHizi = d.BaglantiHizi,
                 Modu = d.Modu,
                 Tipi = d.Tipi,
-                EkleyenKullanici = d.EkleyenKullanici,
+                EkleyenKullanici = d.Kullanici?.Adi,
                 Birim = d.Birim,
                 Aciklama = d.Aciklama
 
             }).ToList();
+            return View(donanimViewModel);
+        }
 
-            return View(donanimViewModelList);
+        public IActionResult Index()
+        {
+            return View();
+        }
+        
+        public IActionResult EkledigimDonanimlar()
+        {
+            return View();
+        }
+        public IActionResult DonanimEkle()
+        {
+            return View();
         }
     }
 }

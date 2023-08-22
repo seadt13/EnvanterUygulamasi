@@ -6,7 +6,6 @@ namespace EnvanterUygulaması.Models
     {
         public DataContext(DbContextOptions options):base(options)
         {
-
         }
         public DbSet<YazilimMarkalari> YazilimMarkalari { get; set; }
         public DbSet<Yazilimlar> Yazilimlar { get; set; }
@@ -20,6 +19,8 @@ namespace EnvanterUygulaması.Models
         public DbSet<Roller> Roller { get; set; }
         public DbSet<KullaniciRolleri> KullaniciRolleri { get; set; }
         public DbSet<Bildirimler> Bildirimler { get; set; }
+        public DbSet<DonanimTurleri> DonanimTurleri { get; set; }
+        public DbSet<DonanimAltTurleri> DonanimAltTurleri { get; set; }
         public DbSet<loglar> Loglar { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

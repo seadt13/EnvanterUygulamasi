@@ -14,6 +14,12 @@ namespace EnvanterUygulaması.Repositories.Concrete
             _context = context;
             _dbSet = _context.Set<TEntity>();
         }
+
+        public async Task<List<TEntity>> GetAllAsync()
+        {
+            return await _context.Set<TEntity>().ToListAsync();
+        }
+
         public void Ekle(TEntity entity)
         {
             _dbSet.Add(entity);
@@ -40,17 +46,6 @@ namespace EnvanterUygulaması.Repositories.Concrete
                 _context.SaveChanges();
             }
 
-        }
-        public IEnumerable<TEntity> TumunuGetir(params Expression<Func<TEntity, object>>[] includeProperties)
-        {
-            IQueryable<TEntity> query = _dbSet;
-
-            foreach (var includeProperty in includeProperties)
-            {
-                query = query.Include(includeProperty);
-            }
-
-            return query.ToList();
         }
     }
 }
