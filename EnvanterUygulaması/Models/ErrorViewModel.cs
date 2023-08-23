@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using EnvanterUygulaması.Context;
+
 namespace EnvanterUygulaması.Models
 {
     public class ErrorViewModel

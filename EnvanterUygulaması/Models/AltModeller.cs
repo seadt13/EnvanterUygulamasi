@@ -1,13 +1,15 @@
-﻿namespace EnvanterUygulaması.Models
+﻿using Microsoft.EntityFrameworkCore;
+using EnvanterUygulaması.Context;
+
+namespace EnvanterUygulaması.Models
 {
     public class AltModeller
     {
         public int id { get; set; }
-        //UstModeller için foreign key
         public int UstModelID { get; set; }
-        public UstModeller UstModel { get; set; }
         public string Adi { get; set; }
         public string Durumu { get; set; }
-        public Donanimlar Donanim { get; set; }
+        public UstModeller ustModeller { get; set; }
+        public Donanimlar donanimlar { get; set; }
     }
 }

@@ -1,23 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using EnvanterUygulaması.Context;
 
 namespace EnvanterUygulaması.Models
 {
     public class Donanimlar
     {
         public int id { get; set; }
-        //DonanimTurleri icin foreign key
-        public int DonanimTuruID { get; set; }
-        public DonanimTurleri DonanimTuru { get; set; }
+        public int DonanimTuruID { get; set; }       
         public int DonanimAltTuruID { get; set; }
-        public DonanimAltTurleri DonanimAltTuru { get; set; }
-        //DonanimMarkalari için foreign key
         public int DonanimMarkaID { get; set; }
-        public DonanimMarkalari DonanimMarka { get; set; }
-        //UstModeller için foreign key
-        public int UstModelID { get; set; }
-        public UstModeller UstModel { get; set; }
-        public int AltModelID { get; set; }
-        public AltModeller AltModel { get; set; }
+        public int UstModelID { get; set; }       
+        public int AltModelID { get; set; }  
         public string MacAdresi { get; set; }
         public string SeriNo { get; set; }
         public string Durumu { get; set; }
@@ -30,8 +23,12 @@ namespace EnvanterUygulaması.Models
         public string? Tipi { get; set; } 
         public string Birim { get; set; }
         public string Aciklama { get; set; }
-        //Kullanicilar icin foreign key
         public int EkleyenID { get; set; }
-        public Kullanicilar Kullanici { get; set; }
+        public DonanimTurleri donanimTurleri { get; set; }
+        public DonanimAltTurleri donanimAltTurleri { get; set; }
+        public DonanimMarkalari donanimMarkalari { get; set; }
+        public UstModeller ustModeller { get; set; }
+        public AltModeller altModeller { get; set; }
+        public Kullanicilar kullanicilar { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using EnvanterUygulaması.Context;
 
 namespace EnvanterUygulaması.Models
 {
