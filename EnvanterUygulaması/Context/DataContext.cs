@@ -27,25 +27,24 @@ namespace EnvanterUygulaması.Context
         {
             modelBuilder.Entity<Yazilimlar>()
                 .HasOne(y => y.yazilimMarkalari)
-                .WithOne(ym => ym.yazilimlar)
-                .HasForeignKey<Yazilimlar>(y => y.YazilimMarkaID);
+                .WithMany(ym => ym.yazilimlar)
+                .HasForeignKey(y => y.YazilimMarkaID);
 
             modelBuilder.Entity<Donanimlar>()
                 .HasOne(d => d.donanimMarkalari)
-                .WithOne(dm => dm.donanimlar)
-                .HasForeignKey<Donanimlar>(d => d.DonanimMarkaID);
+                .WithMany(dm => dm.donanimlar)
+                .HasForeignKey(d => d.DonanimMarkaID);
 
             modelBuilder.Entity<Donanimlar>()
                 .HasOne(d => d.ustModeller)
-                .WithOne(um => um.donanimlar)
-                .HasForeignKey<Donanimlar>(d => d.UstModelID);
+                .WithMany(um => um.donanimlar)
+                .HasForeignKey(d => d.UstModelID);
 
             modelBuilder.Entity<Donanimlar>()
                  .HasOne(d => d.altModeller)
-                 .WithOne(am => am.donanimlar)
-                 .HasForeignKey<Donanimlar>(d => d.AltModelID)
-                 .OnDelete(DeleteBehavior.NoAction);
-
+                 .WithMany(am => am.donanimlar)
+                 .HasForeignKey(d => d.AltModelID)
+                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<UstModeller>()
                .HasMany(um => um.altModeller)
@@ -54,8 +53,8 @@ namespace EnvanterUygulaması.Context
 
             modelBuilder.Entity<Devreler>()
                 .HasOne(de => de.bulutlar)
-                .WithOne(b => b.devreler)
-                .HasForeignKey<Devreler>(de => de.BulutID);
+                .WithMany(b => b.devreler)
+                .HasForeignKey(de => de.BulutID);
 
             modelBuilder.Entity<KullaniciRolleri>()
                 .HasKey(kr => new { kr.KullaniciID, kr.RolID });
@@ -72,18 +71,18 @@ namespace EnvanterUygulaması.Context
 
             modelBuilder.Entity<Donanimlar>()
                 .HasOne(d => d.donanimTurleri)
-                .WithOne(dt => dt.donanimlar)
-                .HasForeignKey<Donanimlar>(d => d.DonanimTuruID);
+                .WithMany(dt => dt.donanimlar)
+                .HasForeignKey(d => d.DonanimTuruID);
 
             modelBuilder.Entity<Donanimlar>()
                 .HasOne(d => d.donanimAltTurleri)
-                .WithOne(dat => dat.donanimlar)
-                .HasForeignKey<Donanimlar>(d => d.DonanimAltTuruID);
+                .WithMany(dat => dat.donanimlar)
+                .HasForeignKey(d => d.DonanimAltTuruID);
 
             modelBuilder.Entity<Donanimlar>()
                 .HasOne(d => d.kullanicilar)
-                .WithOne(k => k.donanimlar)
-                .HasForeignKey<Donanimlar>(d => d.EkleyenID);
+                .WithMany(k => k.donanimlar)
+                .HasForeignKey(d => d.EkleyenID);
 
             modelBuilder.Entity<DonanimAltTurleri>()
                 .HasOne(dat => dat.donanimTurleri)
@@ -93,13 +92,13 @@ namespace EnvanterUygulaması.Context
 
             modelBuilder.Entity<Yazilimlar>()
                 .HasOne(y => y.kullanicilar)
-                .WithOne(k => k.yazilimlar)
-                .HasForeignKey<Yazilimlar>(y => y.EkleyenID);
+                .WithMany(k => k.yazilimlar)
+                .HasForeignKey(y => y.EkleyenID);
 
             modelBuilder.Entity<Devreler>()
                 .HasOne(de => de.kullanicilar)
-                .WithOne(k => k.devreler)
-                .HasForeignKey<Devreler>(de => de.EkleyenID);
+                .WithMany(k => k.devreler)
+                .HasForeignKey(de => de.EkleyenID);
 
             base.OnModelCreating(modelBuilder);
         }

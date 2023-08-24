@@ -8,6 +8,6 @@ namespace EnvanterUygulaması.Models
         public int id { get; set; }
         public string Adi { get; set; }
         public string AnaDevreNo { get; set; }
-        public Devreler devreler { get; set; }
+        public ICollection<Devreler> devreler { get; } = new List<Devreler>();
     }
 }

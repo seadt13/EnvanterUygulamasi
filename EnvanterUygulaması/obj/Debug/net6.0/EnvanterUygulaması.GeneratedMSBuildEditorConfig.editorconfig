@@ -16,6 +16,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\sedat\Desktop\proje132\EnvanterUygulaması
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/Devre/DevreEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2cmVcRGV2cmVFa2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/Devre/DevreListe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2cmVcRGV2cmVMaXN0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/Devre/EkledigimDevreler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2cmVcRWtsZWRpZ2ltRGV2cmVsZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/Donanim/DonanimEkle.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYW5pbVxEb25hbmltRWtsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,6 +54,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/Yazilim/EkledigimYazilimlar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWWF6aWxpbVxFa2xlZGlnaW1ZYXppbGltbGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/Yazilim/YazilimEkle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWWF6aWxpbVxZYXppbGltRWtsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/Yazilim/YazilimListe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWWF6aWxpbVxZYXppbGltTGlzdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sedat/Desktop/proje132/EnvanterUygulaması/Views/_ViewImports.cshtml]

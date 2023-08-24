@@ -8,7 +8,7 @@ namespace EnvanterUygulaması.Models
         public int id { get; set; }
         public string Adi { get; set; }
         public string Durumu { get; set; }
-        public Donanimlar donanimlar { get; set; }
-        public ICollection<AltModeller> altModeller { get; set; }
+        public ICollection<Donanimlar> donanimlar { get; } = new List<Donanimlar>();
+        public ICollection<AltModeller> altModeller { get; } = new List<AltModeller>();
     }
 }

@@ -10,6 +10,6 @@ namespace EnvanterUygulaması.Models
         public string Adi { get; set; }
         public string Durumu { get; set; }
         public DonanimTurleri donanimTurleri { get; set; }
-        public  Donanimlar donanimlar { get; set; }
+        public  ICollection<Donanimlar> donanimlar { get; } = new List<Donanimlar>();
     }
 }

@@ -1,26 +1,28 @@
 ﻿<div class="mt-5">
-    <h3 class="text-center">Donanım Ekle</h3>
+    <h3 class="text-center">Devre Ekle</h3>
 </div>
-<div class="custom-container mt-3">
+
+<div class="custom-container">
+   
     <form>
         <div>
-            <div class="col-auto">
-                <label for="markaSelect">Marka:</label>
-                <select id="markaSelect" class="form-select custom-select" aria-label="Default select example">
+            <div class="col-auto form-group">
+                &ensp;          
+                <label>Adı:</label>
+                <input type="text" class="form-control">
+                &ensp;
+                <label>Devre No:</label>
+                <input type="text" class="form-control">
+                &ensp;
+                <label for="bolgeSelect">Bölge:</label>
+                <select id="bolgeSelect" class="form-select custom-select" aria-label="Default select example">
                     <option value="1">Option 1</option>
                     <option value="2">Option 2</option>
                     <option value="3">Option 3</option>
                 </select>
                 &ensp;
-                <label for="ustSelect">Üst Model:</label>
-                <select id="ustSelect" class="form-select custom-select" aria-label="Default select example">
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                &ensp;
-                <label for="altSelect">Alt Model:</label>
-                <select id="altSelect" class="form-select custom-select" aria-label="Default select example">
+                <label for="bulutAdiSelect">Bulut Adı:</label>
+                <select id="bulutAdiSelect" class="form-select custom-select" aria-label="Default select example">
                     <option value="1">Option 1</option>
                     <option value="2">Option 2</option>
                     <option value="3">Option 3</option>
@@ -33,13 +35,6 @@
                 <label>Seri No:</label>
                 <input type="text" class="form-control">
                 &ensp;
-                <div class="col-md-3">
-                    <label>Durumu:</label>
-                    <select class="form-select custom-select" aria-label="Default select example">
-                        <option value="1">Aktif</option>
-                        <option value="2">Pasif</option>
-                    </select>
-                </div>
             </div>
 
             <div class="custom-container mt-3">
@@ -54,19 +49,11 @@
                 <label>Adet:</label>
                 <input type="text" class="form-control w-25">
                 &ensp;
-                <label class="form-check-label" for="flexSwitchCheckDefault">Poe:</label>
+                <label class="form-check-label" for="flexSwitchCheckDefault">Mahsup:</label>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-
                 </div>
                 &ensp;
-                <div class="col-md-3">
-                    <label>Birimi:</label>
-                    <select class="form-select custom-select" aria-label="Default select example">
-                        <option value="1">4. Bölge</option>
-                        <option value="2">vsvsvsvs</option>
-                    </select>
-                </div>
             </div>
             <div class="custom-container mt-3">
                 <label>Açıklama:</label>
