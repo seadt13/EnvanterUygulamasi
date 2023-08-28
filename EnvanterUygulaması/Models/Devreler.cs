@@ -11,7 +11,7 @@ namespace EnvanterUygulaması.Models
         public string Bolge { get; set; }
         public int BulutID { get; set; }
         public string IpBlogu { get; set; }
-        public bool Durumu { get; set; }
+        public string Durumu { get; set; }
         public string Koordinat { get; set; }
         public bool Mahsup { get; set; }
         public string Aciklama { get; set; }

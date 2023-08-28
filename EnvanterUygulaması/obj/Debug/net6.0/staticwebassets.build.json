@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EBXq2sOKU4duArzvwO0mpzgoyRVbCX6Dk5AaLcOhkcI=",
+  "Hash": "Hz6xgisl+wupLkOxE/0YqIQQ70eoUjozooEh17PGTX0=",
   "Source": "EnvanterUygulaması",
   "BasePath": "_content/EnvanterUygulaması",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\EnvanterUygulaması.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\wwwroot\\css\\donanim.css",
+      "SourceId": "EnvanterUygulaması",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\wwwroot\\",
+      "BasePath": "_content/EnvanterUygulaması",
+      "RelativePath": "css/donanim.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\donanim.css"
     },
     {
       "Identity": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\wwwroot\\css\\site.css",

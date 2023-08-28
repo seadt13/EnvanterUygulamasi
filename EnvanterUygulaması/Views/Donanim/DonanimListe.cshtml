@@ -1,4 +1,4 @@
-﻿@model List<Donanimlar>
+﻿@model List<EnvanterUygulaması.ViewModels.DonanimWM>
 
 <div class="mt-5">
     <h3 class="text-center">Donanım Listesi</h3>
@@ -33,11 +33,11 @@
            @foreach (var item in Model)
             {
                 <tr>
-                   <td>@item.donanimTurleri.Adi</td>
-                   <td>@item.donanimAltTurleri.Adi</td>
-                   <td>@item.donanimMarkalari.Adi</td>
-                   <td>@item.ustModeller.Adi</td>
-                   <td>@item.altModeller.Adi</td>
+                   <td>@item.Turu</td>
+                   <td>@item.AltTuru</td>
+                   <td>@item.Markasi</td>
+                   <td>@item.UstModeli</td>
+                   <td>@item.AltModeli</td>
                    <td>@item.MacAdresi</td>
                    <td>@item.SeriNo</td>
                    <td>@item.Durumu</td>
@@ -45,9 +45,9 @@
                    <td>@item.AlimTarihi</td>
                    <td>@item.Adedi</td>
                    <td>@item.Poe</td>
-                   <td>@item.kullanicilar.Adi</td>
+                   <td>@item.EkleyenKullanici</td>
                    <td>@item.Aciklama</td>
-                   <td>@item.Birim</td>
+                   <td>@item.Birimi</td>
                 </tr>
             }
         </tbody>

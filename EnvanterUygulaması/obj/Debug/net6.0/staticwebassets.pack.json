@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\EnvanterUygulaması.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\wwwroot\\css\\donanim.css",
+      "PackagePath": "staticwebassets\\css\\donanim.css"
+    },
+    {
       "Id": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

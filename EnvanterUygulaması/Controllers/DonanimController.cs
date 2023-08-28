@@ -1,5 +1,7 @@
-﻿using EnvanterUygulaması.Context;
-using EnvanterUygulaması.Models;
+﻿using EnvanterUygulaması.Models;
+using EnvanterUygulaması.Repositories.Abstract;
+using EnvanterUygulaması.Repositories.Concrete;
+using EnvanterUygulaması.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,26 +9,50 @@ namespace EnvanterUygulaması.Controllers
 {
     public class DonanimController : Controller
     {
-        private readonly DataContext _context;
+        private readonly IDonanimRepository _donanimRepository;
 
-        public DonanimController(DataContext context)
+        public DonanimController(IDonanimRepository donanimRepository)
         {
-            _context = context;
+            _donanimRepository = donanimRepository;
         }
         
-        public IActionResult DonanimListe()
+        public async Task<IActionResult> DonanimListe()
         {
-            var donanimList= _context.Donanimlar
-                .Include(d=>d.donanimTurleri)
-                .Include(d=>d.donanimAltTurleri)
-                .Include(d=>d.donanimMarkalari)
-                .Include(d=>d.ustModeller)
-                .Include(d=>d.altModeller)
-                .Include(d=>d.kullanicilar)
-                .ToList();
-            return View(donanimList);
+            var donanimlar = await _donanimRepository.TumunuGetir();
+            List<DonanimWM> donanimListesi = donanimlar.Select(x => new DonanimWM()
+            {
+                Turu = x.donanimTurleri.Adi,
+                AltTuru=x.donanimAltTurleri.Adi,
+                Markasi=x.donanimMarkalari.Adi,
+                UstModeli=x.ustModeller.Adi,
+                AltModeli=x.altModeller.Adi,
+                MacAdresi=x.MacAdresi,
+                SeriNo=x.SeriNo,
+                Durumu=x.Durumu,
+                Aciklama=x.Aciklama,
+                Adedi=x.Adedi,
+                AlimTarihi=x.AlimTarihi,
+                Birimi=x.Birim,
+                EkleyenKullanici=x.kullanicilar.Adi,
+                GarantiSuresi=x.GarantiSuresi,
+                Poe=x.Poe
+            }).ToList();
+
+            return View(donanimListesi);
         }
 
+        public async Task<IActionResult> DonanimEkle()
+        {
+            var donanimMarkalari= 
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> DonanimEkle(Donanimlar donanim)
+        {
+            await _donanimRepository.DonanimEkle(donanim);
+
+            return RedirectToAction("Index");
+        }
         public IActionResult Index()
         {
             return View();
@@ -36,9 +62,6 @@ namespace EnvanterUygulaması.Controllers
         {
             return View();
         }
-        public IActionResult DonanimEkle()
-        {
-            return View();
-        }
+        
     }
 }

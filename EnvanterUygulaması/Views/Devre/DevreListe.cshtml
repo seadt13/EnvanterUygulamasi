@@ -1,4 +1,4 @@
-﻿@model List<Devreler>
+﻿@model List<EnvanterUygulaması.ViewModels.DevreWM>
 
 <div class="mt-5">
     <h3 class="text-center">Yazılım Listesi</h3>
@@ -23,6 +23,7 @@
               <th>Koordinat</th>
               <th>Açıklama</th>
               <th>Mahsup</th>
+              <th>Ekleyen Kullanıcı</th>
             </tr>
           </thead>
           <tbody>
@@ -30,16 +31,17 @@
             {
                 <tr>
                    <td>@item.Adi</td>
-                   <td>@item.No</td>
+                   <td>@item.Nosu</td>
                    <td>@item.Bolge</td>
-                   <td>@item.bulutlar.id</td>
-                   <td>@item.bulutlar.Adi</td>
-                   <td>@item.bulutlar.AnaDevreNo</td>
+                   <td>@item.BulutID</td>
+                   <td>@item.BulutAdi</td>
+                   <td>@item.AnaDevreNo</td>
                    <td>@item.IpBlogu</td>
                    <td>@item.Durumu</td>
-                   <td>@item.Koordinat</td>
+                   <td>@item.Koordinati</td>
                    <td>@item.Aciklama</td>
                    <td>@item.Mahsup</td>
+                   <td>@item.EkleyenKullanici</td>
                 </tr>
             }
         </tbody>

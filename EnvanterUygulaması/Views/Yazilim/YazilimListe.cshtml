@@ -1,4 +1,4 @@
-﻿@model List<Yazilimlar>
+﻿@model List<EnvanterUygulaması.ViewModels.YazilimWM>
 
 <div class="mt-5">
     <h3 class="text-center">Yazılım Listesi</h3>
@@ -26,14 +26,15 @@
            @foreach (var item in Model)
             {
                 <tr>
-                   <td>@item.yazilimMarkalari.Adi</td>
+                   <td>@item.Markasi</td>
                    <td>@item.Adi</td>
-                   <td>@item.Versiyon</td>
+                   <td>@item.Versiyonu</td>
                    <td>@item.Turu</td>
                    <td>@item.CihazSayisi</td>
                    <td>@item.AlimTarihi</td>
                    <td>@item.DestekSuresi</td>
                    <td>@item.Aciklama</td>
+                   <td>@item.EkleyenKullanici</td>
                 </tr>
             }
         </tbody>

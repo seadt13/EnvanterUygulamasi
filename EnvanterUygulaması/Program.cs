@@ -1,4 +1,6 @@
 using EnvanterUygulamasý.Context;
+using EnvanterUygulamasý.Repositories.Abstract;
+using EnvanterUygulamasý.Repositories.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Veritabaný baðlantý ayarýný al
 var configuration = builder.Configuration;
 
+
+builder.Services.AddTransient<IDonanimRepository, DonanimRepository>();
+builder.Services.AddTransient<IYazilimRepository, YazilimRepository>();
+builder.Services.AddTransient<IDevreRepository, DevreRepository>();
 // DbContext yapýlandýrmasýný ekle
 builder.Services.AddDbContext<DataContext>(options =>
 {
