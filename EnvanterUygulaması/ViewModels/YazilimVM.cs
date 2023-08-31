@@ -1,6 +1,6 @@
 ﻿namespace EnvanterUygulaması.ViewModels
 {
-    public class YazilimWM
+    public class YazilimVM
     {
         public int id { get; set; }
         public string Markasi { get; set; }

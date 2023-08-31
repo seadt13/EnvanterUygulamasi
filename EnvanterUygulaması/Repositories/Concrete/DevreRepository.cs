@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EnvanterUygulaması.Repositories.Concrete
 {
-    public class DevreRepository : IDevreRepository
+    public class DevreRepository : GenericRepository<Devreler> ,IDevreRepository
     {
         private readonly DataContext _context;
 
-        public DevreRepository(DataContext context)
+        public DevreRepository(DataContext context): base(context)
         {
             _context = context;
         }
-        public async Task<List<Devreler>> TumunuGetir()
+        public async Task<List<Devreler>> TumunuGetirInclude()
         {
             var devreList = await _context.Devreler
                 .Include(d => d.bulutlar)

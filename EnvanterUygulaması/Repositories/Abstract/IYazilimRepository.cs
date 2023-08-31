@@ -2,8 +2,8 @@
 
 namespace EnvanterUygulaması.Repositories.Abstract
 {
-    public interface IYazilimRepository
+    public interface IYazilimRepository: IGenericRepository<Yazilimlar>
     {
-        Task<List<Yazilimlar>> TumunuGetir();
+        Task<List<Yazilimlar>> TumunuGetirInclude();
     }
 }

@@ -6,16 +6,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EnvanterUygulaması.Repositories.Concrete
 {
-    public class YazilimRepository: IYazilimRepository
+    public class YazilimRepository: GenericRepository<Yazilimlar>,IYazilimRepository
     {
         private readonly DataContext _context;
 
-        public YazilimRepository(DataContext context)
+        public YazilimRepository(DataContext context): base(context) 
         {
             _context = context;
         }
 
-        public async Task<List<Yazilimlar>> TumunuGetir()
+        public async Task<List<Yazilimlar>> TumunuGetirInclude()
         {
             var yazilimList = await _context.Yazilimlar
                 .Include(y => y.yazilimMarkalari)

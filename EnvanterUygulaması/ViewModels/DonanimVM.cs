@@ -1,6 +1,8 @@
-﻿namespace EnvanterUygulaması.ViewModels
+﻿using EnvanterUygulaması.Models;
+
+namespace EnvanterUygulaması.ViewModels
 {
-    public class DonanimWM
+    public class DonanimVM
     {
         public int id {  get; set; }
         public string Turu { get; set; }
@@ -18,6 +20,8 @@
         public string Aciklama { get; set; }
         public string Birimi { get; set; }
         public string EkleyenKullanici { get; set; }
+
+        public List<Liste> MarkaList { get; set; }
 
     }
 }

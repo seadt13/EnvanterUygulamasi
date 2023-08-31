@@ -18,8 +18,8 @@ namespace EnvanterUygulaması.Controllers
 
         public async Task<IActionResult> DevreListe() 
         {
-            var devreler = await _devreRepository.TumunuGetir();
-            List<DevreWM> devreListe = devreler.Select(x=>new DevreWM()
+            var devreler = await _devreRepository.TumunuGetirInclude();
+            List<DevreVM> devreListe = devreler.Select(x=>new DevreVM()
             {
                 Aciklama = x.Aciklama,
                 Adi=x.Adi,

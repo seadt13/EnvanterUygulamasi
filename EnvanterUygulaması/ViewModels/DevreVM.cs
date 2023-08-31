@@ -1,6 +1,6 @@
 ﻿namespace EnvanterUygulaması.ViewModels
 {
-    public class DevreWM
+    public class DevreVM
     {
         public int id { get; set; }
         public string Adi {get;set;}

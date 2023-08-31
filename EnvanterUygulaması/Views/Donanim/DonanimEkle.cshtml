@@ -1,82 +1,156 @@
-﻿<div class="mt-5">
-    <h3 class="text-center">Donanım Ekle</h3>
-</div>
-<div class="custom-container mt-3">
+﻿@model EnvanterUygulaması.ViewModels.DonanimEkleDuzenleVM;
+
+<div class="custom-container mt-5">
     <form>
-        <div>
-            <div class="col-auto">
-                <label for="markaSelect">Marka:</label>
-                <select id="markaSelect" class="form-select custom-select" aria-label="Default select example">
+        <div class="row mt-3">
+            <div class="col-md-4">
+
+                <label for="TurSelect">Türü:</label>
+                <select id="TurSelect" class="form-select custom-select" aria-label="Default select example">
                     <option value="1">Option 1</option>
                     <option value="2">Option 2</option>
                     <option value="3">Option 3</option>
                 </select>
-                &ensp;
-                <label for="ustSelect">Üst Model:</label>
-                <select id="ustSelect" class="form-select custom-select" aria-label="Default select example">
+                <label>Üst Model:</label>
+                @Html.DropDownListFor(model => model.id, new SelectList(Model.UstModelList, "id", "Adi"),"Üst Model seçiniz",
+                new { @class = "form-select", @id="ustModelDD"})
+
+
+            </div>
+            <div class="col-md-4">
+
+                <label for="AltTurSelect">Alt Türü:</label>
+                <select id="AltTurSelect" class="form-select custom-select" aria-label="Default select example">
                     <option value="1">Option 1</option>
                     <option value="2">Option 2</option>
                     <option value="3">Option 3</option>
                 </select>
-                &ensp;
-                <label for="altSelect">Alt Model:</label>
-                <select id="altSelect" class="form-select custom-select" aria-label="Default select example">
-                    <option value="1">Option 1</option>
+                <label>Alt Model:</label>
+                @Html.DropDownListFor(model => model.id, new SelectList(Model.AltModelList, "id", "Adi"),"Alt Model seçiniz",
+                new { @class = "form-select", @id="altModelDD"})
+
+            </div>
+            <div class="col-md-4">
+
+                <label>Marka:</label>
+                @Html.DropDownListFor(model => model.id, new SelectList(Model.MarkaList, "id", "Adi"),"Marka seçiniz",
+                new { @class = "form-select", @id="markaDD"})
+                <label>Birimi:</label>
+                <select class="form-select custom-select" aria-label="Default select example">
+                    <option value="1">4. Bölge</option>
+                    <option value="2">vsvsvsvs</option>
+                </select>
+
+
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <label>Bağlantı Hızı:</label>
+                <input type="text" class="form-control">
+                <label>Tipi:</label>
+                <select class="form-select custom-select" aria-label="Default select example">
+                    <option value="1">Option 1 </option>
                     <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
+                </select>
+
+                <label>Durumu:</label>
+                <select class="form-select custom-select" aria-label="Default select example">
+                    <option value="1">Aktif</option>
+                    <option value="2">Pasif</option>
                 </select>
             </div>
-            <div class="custom-container w-50 mt-3">
-                <label>MAC Adresi:</label>
-                <input type="text" class="form-control">
-                &ensp;
+            <div class="col-md-4">
+                <label>Modu:</label>
+                <select class="form-select custom-select" aria-label="Default select example">
+                    <option value="1">Option 1 </option>
+                    <option value="2">Option 2</option>
+                </select>
                 <label>Seri No:</label>
                 <input type="text" class="form-control">
-                &ensp;
-                <div class="col-md-3">
-                    <label>Durumu:</label>
-                    <select class="form-select custom-select" aria-label="Default select example">
-                        <option value="1">Aktif</option>
-                        <option value="2">Pasif</option>
-                    </select>
-                </div>
+                <label>Alım Tarihi:</label>
+                <input type="date" class="form-control">
+
             </div>
 
-            <div class="custom-container mt-3">
-                <label>Alım Tarihi:</label>
-                <input type="date" class="form-control ">
-                &ensp;
+            <div class="col-md-4">
+                <label>Gücü:</label>
+                <input type="text" class="form-control">
+                <label>MAC Adresi:</label>
+                <input type="text" class="form-control">
                 <label>Garanti Süresi:</label>
                 <input type="text" class="form-control">
-
             </div>
-            <div class="custom-container mt-3">
-                <label>Adet:</label>
-                <input type="text" class="form-control w-25">
-                &ensp;
-                <label class="form-check-label" for="flexSwitchCheckDefault">Poe:</label>
+        </div>
+        <div class="row mt-3">
+
+            <div class="col-md-4">
+                <label class="form-check-label">Poe:</label>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-
-                </div>
-                &ensp;
-                <div class="col-md-3">
-                    <label>Birimi:</label>
-                    <select class="form-select custom-select" aria-label="Default select example">
-                        <option value="1">4. Bölge</option>
-                        <option value="2">vsvsvsvs</option>
-                    </select>
+                    <input class="form-check-input" type="checkbox" role="switch">
                 </div>
             </div>
-            <div class="custom-container mt-3">
+
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
                 <label>Açıklama:</label>
                 <textarea class="form-control" aria-label="With textarea"></textarea>
             </div>
+        </div>
 
-            <div class="custom-container mt-3">
-                <a href="#" class="red-class">Vazgeç</a>
+        <div class="row mt-3">
+            <div class="col-md-12 d-flex justify-content-between">
+                <button type="button" class="btn btn-danger">Vazgeç</button>
                 <button type="button" class="btn btn-primary">Kaydet</button>
             </div>
         </div>
     </form>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#markaDD").change(function () {
+            $("#ustModelDD").html("");
+            var dropdown = document.getElementById("markaDD");
+            var secilenMarkaId = dropdown.value;
+            if (secilenMarkaId !== "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/List/UstModelGetir?MarkaId=" + secilenMarkaId,
+                    success: function (ustModeller) {
+                        var sonuc = "";
+                        for (var i = 0; i < ustModeller.length; i++) {
+                            sonuc += "<option value='" + ustModeller[i].id + "'>" + ustModeller[i].adi + "</option>"
+                        }
+                        $("#ustModelDD").append(sonuc);
+
+                        $("#ustModelDD").trigger("change");
+                    }
+                })
+            }
+        });
+
+        $("#ustModelDD").change(function () {
+            $("#altModelDD").html("");
+            var dropdown = document.getElementById("ustModelDD");
+            var secilenUstModelId = dropdown.value;
+            if (secilenUstModelId !== "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/List/AltModelGetir?UstModelId=" + secilenUstModelId,
+                    success: function (altModeller) {
+                        var sonuc = "";
+                        for (var i = 0; i < altModeller.length; i++) {
+                            sonuc += "<option value='" + altModeller[i].id + "'>" + altModeller[i].adi + "</option>"
+                        }
+                        $("#altModelDD").append(sonuc);
+                    }
+                })
+            }
+        });
+    });
+
+
+</script>

@@ -8,10 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Veritabaný baðlantý ayarýný al
 var configuration = builder.Configuration;
 
-
 builder.Services.AddTransient<IDonanimRepository, DonanimRepository>();
 builder.Services.AddTransient<IYazilimRepository, YazilimRepository>();
 builder.Services.AddTransient<IDevreRepository, DevreRepository>();
+builder.Services.AddTransient<IListRepository, ListRepository>();
+
 // DbContext yapýlandýrmasýný ekle
 builder.Services.AddDbContext<DataContext>(options =>
 {

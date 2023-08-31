@@ -2,8 +2,8 @@
 
 namespace EnvanterUygulaması.Repositories.Abstract
 {
-    public interface IDevreRepository
+    public interface IDevreRepository: IGenericRepository<Devreler>
     {
-        Task<List<Devreler>> TumunuGetir();
+        Task<List<Devreler>> TumunuGetirInclude();
     }
 }

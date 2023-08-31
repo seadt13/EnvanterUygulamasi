@@ -100,6 +100,12 @@ namespace EnvanterUygulaması.Context
                 .WithMany(k => k.devreler)
                 .HasForeignKey(de => de.EkleyenID);
 
+            modelBuilder.Entity<DonanimMarkalari>()
+                .HasMany(d => d.ustModeller)
+                .WithOne(um => um.donanimMarkalari)
+                .HasForeignKey(d => d.DonanimMarkaId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
             base.OnModelCreating(modelBuilder);
         }
     }

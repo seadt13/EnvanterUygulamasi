@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EnvanterUygulaması.Repositories.Concrete
 {
-    public class DonanimRepository : IDonanimRepository
+    public class DonanimRepository : GenericRepository<Donanimlar> ,IDonanimRepository
     {
         private readonly DataContext _context;
 
-        public DonanimRepository(DataContext context)
+        public DonanimRepository(DataContext context): base(context)
         {
             _context = context;
         }
@@ -19,7 +19,7 @@ namespace EnvanterUygulaması.Repositories.Concrete
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Donanimlar>> TumunuGetir()
+        public async Task<List<Donanimlar>> TumunuGetirInclude()
         {
             var donanimList = await _context.Donanimlar
                 .Include(d => d.donanimTurleri)
@@ -32,5 +32,7 @@ namespace EnvanterUygulaması.Repositories.Concrete
 
             return donanimList;
         }
+
+
     }
 }

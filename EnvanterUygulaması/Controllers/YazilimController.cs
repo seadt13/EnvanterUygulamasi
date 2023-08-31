@@ -18,8 +18,8 @@ namespace EnvanterUygulaması.Controllers
 
         public async Task<IActionResult> YazilimListe() 
         {
-            var yazilimlar = await _yazilimRepository.TumunuGetir();
-            List<YazilimWM> yazilimListesi = yazilimlar.Select(x=>new YazilimWM()
+            var yazilimlar = await _yazilimRepository.TumunuGetirInclude();
+            List<YazilimVM> yazilimListesi = yazilimlar.Select(x=>new YazilimVM()
             {
                 Markasi=x.yazilimMarkalari.Adi,
                 Aciklama=x.Aciklama,

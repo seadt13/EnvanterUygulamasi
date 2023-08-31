@@ -2,9 +2,9 @@
 
 namespace EnvanterUygulaması.Repositories.Abstract
 {
-    public interface IDonanimRepository
+    public interface IDonanimRepository: IGenericRepository<Donanimlar>
     {
-        Task<List<Donanimlar>> TumunuGetir();
+        Task<List<Donanimlar>> TumunuGetirInclude();
         Task DonanimEkle(Donanimlar donanim);
     }
 }

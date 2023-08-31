@@ -3,6 +3,7 @@ using EnvanterUygulaması.Repositories.Abstract;
 using EnvanterUygulaması.Repositories.Concrete;
 using EnvanterUygulaması.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace EnvanterUygulaması.Controllers
@@ -10,16 +11,18 @@ namespace EnvanterUygulaması.Controllers
     public class DonanimController : Controller
     {
         private readonly IDonanimRepository _donanimRepository;
+        private readonly IListRepository _listRepository;
 
-        public DonanimController(IDonanimRepository donanimRepository)
+        public DonanimController(IDonanimRepository donanimRepository, IListRepository listRepository)
         {
+            _listRepository = listRepository;
             _donanimRepository = donanimRepository;
         }
         
         public async Task<IActionResult> DonanimListe()
         {
-            var donanimlar = await _donanimRepository.TumunuGetir();
-            List<DonanimWM> donanimListesi = donanimlar.Select(x => new DonanimWM()
+            var donanimlar = await _donanimRepository.TumunuGetirInclude();
+            List<DonanimVM> donanimListesi = donanimlar.Select(x => new DonanimVM()
             {
                 Turu = x.donanimTurleri.Adi,
                 AltTuru=x.donanimAltTurleri.Adi,
@@ -41,10 +44,22 @@ namespace EnvanterUygulaması.Controllers
             return View(donanimListesi);
         }
 
-        public async Task<IActionResult> DonanimEkle()
+        public async Task<IActionResult> DonanimEkle(int id=0)
         {
-            var donanimMarkalari= 
-            return View();
+            DonanimEkleDuzenleVM donanimEkleDuzenleVM = new DonanimEkleDuzenleVM();
+            List<Liste> markaList =await _listRepository.MarkaListesiGetir();
+            donanimEkleDuzenleVM.MarkaList = markaList;
+
+            if (id!=0)
+            {
+                //var donanim =await _donanimRepository.Getir(id);
+                //donanimEkleDuzenleVM.id = donanim.id;
+                //var altModelListe = _donanimRepository.TumunuGetir;
+
+            }
+            //ViewBag.MarkaList = new SelectList(donanimMarkalari, "id", "Adi");
+
+            return View(donanimEkleDuzenleVM);
         }
         [HttpPost]
         public async Task<IActionResult> DonanimEkle(Donanimlar donanim)
