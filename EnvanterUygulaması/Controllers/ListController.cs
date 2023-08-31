@@ -16,6 +16,11 @@ namespace EnvanterUygulaması.Controllers
             return View();
         }
 
+        public async Task<JsonResult> AltTurGetir(int TurId)
+        {
+            var altTurListe = await _listRepository.AltTurListesiGetir(TurId);
+            return Json(altTurListe);
+        }
         public async Task<JsonResult> UstModelGetir(int MarkaId)
         {
             var ustModelListe = await _listRepository.UstModelListesiGetir(MarkaId);

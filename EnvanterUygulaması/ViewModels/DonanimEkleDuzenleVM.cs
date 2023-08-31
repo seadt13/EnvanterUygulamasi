@@ -6,6 +6,8 @@ namespace EnvanterUygulaması.ViewModels
     {
         public DonanimEkleDuzenleVM()
         {
+            TurList=new List<Liste>();
+            AltTurList=new List<Liste>();
             MarkaList=new List<Liste>();
             UstModelList=new List<Liste>();
             AltModelList=new List<Liste>();
@@ -22,9 +24,9 @@ namespace EnvanterUygulaması.ViewModels
 
         public int? AltTurId { get; set; }
 
-        public int DurumId { get; set; }
+        public string Durum { get; set; }
 
-        public int BirimId { get; set; }
+        public string Birim { get; set; }
 
         public string? MacAdres { get; set; }
 
@@ -41,9 +43,12 @@ namespace EnvanterUygulaması.ViewModels
 
         public string? Mod { get; set; }
 
-        public int? Guc { get; set; }
+        public string? Guc { get; set; }
 
         public string? Tip { get; set; }
+
+        public List<Liste> TurList { get; set; }
+        public List<Liste> AltTurList { get; set; }
         public List<Liste>  MarkaList{ get; set; }
         public List<Liste>  UstModelList{ get; set; }
         public List<Liste>  AltModelList{ get; set; }

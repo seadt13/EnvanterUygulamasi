@@ -1,86 +1,85 @@
 ﻿@model EnvanterUygulaması.ViewModels.DonanimEkleDuzenleVM;
 
+@if (TempData["HataMesaji"] != null)
+{
+    <div class="alert alert-danger">@TempData["HataMesaji"]</div>
+}
+
+
 <div class="custom-container mt-5">
-    <form>
+    <form asp-controller="Donanim" asp-action="DonanimEkle" method="post">
         <div class="row mt-3">
             <div class="col-md-4">
 
-                <label for="TurSelect">Türü:</label>
-                <select id="TurSelect" class="form-select custom-select" aria-label="Default select example">
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                <label>Üst Model:</label>
-                @Html.DropDownListFor(model => model.id, new SelectList(Model.UstModelList, "id", "Adi"),"Üst Model seçiniz",
-                new { @class = "form-select", @id="ustModelDD"})
+                <label asp-for="TurId">Türü:</label>
+                @Html.DropDownListFor(model => model.TurId, new SelectList(Model.TurList, "id", "Adi"),"Türü seçiniz",
+                new { @class = "form-select", @id="turDD", name="TurId"})
+
+                <label asp-for="UstModelId">Üst Model:</label>
+                @Html.DropDownListFor(model => model.UstModelId, new SelectList(Model.UstModelList, "id", "Adi"),"Üst Model seçiniz",
+                new { @class = "form-select", @id="ustModelDD",name="UstModelId"})
 
 
             </div>
             <div class="col-md-4">
 
-                <label for="AltTurSelect">Alt Türü:</label>
-                <select id="AltTurSelect" class="form-select custom-select" aria-label="Default select example">
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                <label>Alt Model:</label>
-                @Html.DropDownListFor(model => model.id, new SelectList(Model.AltModelList, "id", "Adi"),"Alt Model seçiniz",
-                new { @class = "form-select", @id="altModelDD"})
+                <label asp-for="AltTurId">Alt Türü:</label>
+                @Html.DropDownListFor(model => model.AltTurId, new SelectList(Model.AltTurList, "id", "Adi"),"Alt Türü seçiniz",
+                new { @class = "form-select", @id="altTurDD", name="AltTurId"})
+                <label asp-for="AltModelId">Alt Model:</label>
+                @Html.DropDownListFor(model => model.AltModelId, new SelectList(Model.AltModelList, "id", "Adi"),"Alt Model seçiniz",
+                new { @class = "form-select", @id="altModelDD", name="AltModelId"})
 
             </div>
             <div class="col-md-4">
 
-                <label>Marka:</label>
-                @Html.DropDownListFor(model => model.id, new SelectList(Model.MarkaList, "id", "Adi"),"Marka seçiniz",
-                new { @class = "form-select", @id="markaDD"})
-                <label>Birimi:</label>
-                <select class="form-select custom-select" aria-label="Default select example">
-                    <option value="1">4. Bölge</option>
-                    <option value="2">vsvsvsvs</option>
+                <label asp-for="MarkaId">Marka:</label>
+                @Html.DropDownListFor(model => model.MarkaId, new SelectList(Model.MarkaList, "id", "Adi"),"Marka seçiniz",
+                new { @class = "form-select", @id="markaDD" ,name="MarkaId"})
+                <label asp-for="Birim">Birimi:</label>
+                <select asp-for="Birim" class="form-select custom-select" aria-label="Default select example">
+                    <option value="deneme1">denemebolge1</option>
+                    <option value="deneme2">denemebolge2</option>
                 </select>
-
-
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row">
             <div class="col-md-4">
-                <label>Bağlantı Hızı:</label>
-                <input type="text" class="form-control">
-                <label>Tipi:</label>
-                <select class="form-select custom-select" aria-label="Default select example">
-                    <option value="1">Option 1 </option>
-                    <option value="2">Option 2</option>
+                <label asp-for="BaglantiHizi">Bağlantı Hızı:</label>
+                <input type="text" class="form-control" asp-for="BaglantiHizi">
+                <label asp-for="Tip">Tipi:</label>
+                <select class="form-select custom-select" asp-for="Tip">
+                    <option value="td1">TD1</option>
+                    <option value="td2">TD2</option>
                 </select>
 
-                <label>Durumu:</label>
-                <select class="form-select custom-select" aria-label="Default select example">
-                    <option value="1">Aktif</option>
-                    <option value="2">Pasif</option>
+                <label asp-for="Durum">Durumu:</label>
+                <select class="form-select custom-select" asp-for="Durum">
+                    <option value="Aktif">Aktif</option>
+                    <option value="Pasif">Pasif</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <label>Modu:</label>
-                <select class="form-select custom-select" aria-label="Default select example">
+                <label asp-for="Mod">Modu:</label>
+                <select class="form-select custom-select" asp-for="Mod">
                     <option value="1">Option 1 </option>
                     <option value="2">Option 2</option>
                 </select>
-                <label>Seri No:</label>
-                <input type="text" class="form-control">
-                <label>Alım Tarihi:</label>
-                <input type="date" class="form-control">
+                <label asp-for="SeriNo">Seri No:</label>
+                <input type="text" class="form-control" asp-for="SeriNo">
+                <label asp-for="AlimTarihi">Alım Tarihi:</label>
+                <input type="date" class="form-control" asp-for="AlimTarihi">
 
             </div>
 
             <div class="col-md-4">
-                <label>Gücü:</label>
-                <input type="text" class="form-control">
-                <label>MAC Adresi:</label>
-                <input type="text" class="form-control">
-                <label>Garanti Süresi:</label>
-                <input type="text" class="form-control">
+                <label asp-for="Guc">Gücü:</label>
+                <input type="text" class="form-control" asp-for="Guc">
+                <label asp-for="MacAdres">MAC Adresi:</label>
+                <input type="text" class="form-control" asp-for="MacAdres">
+                <label asp-for="GarantiSuresi">Garanti Süresi:</label>
+                <input type="text" class="form-control" asp-for="GarantiSuresi">
             </div>
         </div>
         <div class="row mt-3">
@@ -88,7 +87,7 @@
             <div class="col-md-4">
                 <label class="form-check-label">Poe:</label>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch">
+                    <input class="form-check-input" type="checkbox" name="Poe">
                 </div>
             </div>
 
@@ -96,21 +95,40 @@
 
         <div class="row mt-3">
             <div class="col-md-12">
-                <label>Açıklama:</label>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
+                <label asp-for="Aciklama">Açıklama:</label>
+                <textarea class="form-control" aria-label="With textarea" asp-for="Aciklama"></textarea>
             </div>
         </div>
 
         <div class="row mt-3">
             <div class="col-md-12 d-flex justify-content-between">
                 <button type="button" class="btn btn-danger">Vazgeç</button>
-                <button type="button" class="btn btn-primary">Kaydet</button>
+                <button type="submit" class="btn btn-primary">Kaydet</button>
             </div>
         </div>
     </form>
 </div>
 <script>
     $(document).ready(function () {
+        $("#turDD").change(function () {
+            $("#altTurDD").html("");
+            var dropdown = document.getElementById("turDD");
+            var secilenTurId = dropdown.value;
+            if (secilenTurId !== "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/List/AltTurGetir?TurId=" + secilenTurId,
+                    success: function (altTurler) {
+                        var sonuc = "";
+                        for (var i = 0; i < altTurler.length; i++) {
+                            sonuc += "<option value='" + altTurler[i].id + "'>" + altTurler[i].adi + "</option>"
+                        }
+                        $("#altTurDD").append(sonuc);
+                    }
+                })
+            }
+        });
+
         $("#markaDD").change(function () {
             $("#ustModelDD").html("");
             var dropdown = document.getElementById("markaDD");

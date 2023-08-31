@@ -33,6 +33,15 @@ namespace EnvanterUygulaması.Repositories.Concrete
             return donanimList;
         }
 
-
+        public async Task<Donanimlar?> GetirInclude(int id)
+        {
+            return await _context.Donanimlar.Include(d => d.donanimTurleri)
+                .Include(d => d.donanimAltTurleri)
+                .Include(d => d.donanimMarkalari)
+                .Include(d => d.ustModeller)
+                .Include(d => d.altModeller)
+                .Include(d => d.kullanicilar).
+                Where(d=>d.id==id).FirstOrDefaultAsync();
+        }
     }
 }

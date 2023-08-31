@@ -14,6 +14,19 @@ namespace EnvanterUygulaması.Repositories.Concrete
             _context = context;
         }
 
+        public async Task<List<Liste>> TurListesiGetir()
+        {
+            var turler = await _context.DonanimTurleri.ToListAsync();
+            var turListesi = turler.Select(x => new Liste { Adi = x.Adi, id = x.id }).ToList();
+            return turListesi;
+        }
+        public async Task<List<Liste>> AltTurListesiGetir(int turId)
+        {
+            var altTurler = await _context.DonanimAltTurleri.Where(x => x.DonanimTuruID == turId).ToListAsync();
+            var altTurListesi = altTurler.Select(x => new Liste { Adi = x.Adi, id = x.id }).ToList();
+            return altTurListesi;
+        }
+
         public async Task<List<Liste>> MarkaListesiGetir()
         {
             var markalar = await _context.DonanimMarkalari.ToListAsync();
@@ -32,6 +45,30 @@ namespace EnvanterUygulaması.Repositories.Concrete
             var altModelListesi = altModeller.Select(x=>new Liste { Adi=x.Adi,id = x.id}).ToList();
             return altModelListesi;
         }
-        
+
+        public List<string> BolgeListe()
+        {
+            List<string> items = new List<string>
+            {
+                "1. Bölge Müdürlüğü | İstanbul",
+                "2. Bölge Müdürlüğü | İzmir",
+                "3. Bölge Müdürlüğü | Konya",
+                "4. Bölge Müdürlüğü | Ankara",
+                "5. Bölge Müdürlüğü | Mersin",
+                "6. Bölge Müdürlüğü | Kayseri",
+                "7. Bölge Müdürlüğü | Samsun",
+                "8. Bölge Müdürlüğü | Elazığ",
+                "9. Bölge Müdürlüğü | Diyarbakır",
+                "10. Bölge Müdürlüğü | Trabzon",
+                "11. Bölge Müdürlüğü | Van",
+                "12. Bölge Müdürlüğü | Erzurum",
+                "13. Bölge Müdürlüğü | Antalya",
+                "14. Bölge Müdürlüğü | Bursa",
+                "15. Bölge Müdürlüğü| Kastamonu",
+                "16. Bölge Müdürlüğü | Sivas",
+                "18. Bölge Müdürlüğü | Kars"
+            };
+            return items;
+        }
     }
 }

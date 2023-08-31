@@ -6,5 +6,6 @@ namespace EnvanterUygulaması.Repositories.Abstract
     {
         Task<List<Donanimlar>> TumunuGetirInclude();
         Task DonanimEkle(Donanimlar donanim);
+        Task<Donanimlar?> GetirInclude(int Id);
     }
 }

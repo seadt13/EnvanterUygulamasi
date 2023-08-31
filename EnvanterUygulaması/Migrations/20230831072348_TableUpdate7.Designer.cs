@@ -4,6 +4,7 @@ using EnvanterUygulaması.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnvanterUygulaması.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class EnvanterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230831072348_TableUpdate7")]
+    partial class TableUpdate7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,6 +225,9 @@ namespace EnvanterUygulaması.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Adedi")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("AlimTarihi")
                         .HasColumnType("datetime2");
 
@@ -258,12 +264,13 @@ namespace EnvanterUygulaması.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MacAdresi")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Modu")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("Poe")
+                    b.Property<bool>("Poe")
                         .HasColumnType("bit");
 
                     b.Property<string>("SeriNo")

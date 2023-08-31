@@ -21,9 +21,23 @@ namespace EnvanterUygulaması.Repositories.Concrete
 
         public async Task<TEntity> Ekle(TEntity entity)
         {
-            _entity.Add(entity);
+            try
+            {
+                _entity.Add(entity);
+                await _context.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
+        }
+        public async Task Guncelle(TEntity entity)
+        {
+            _entity.Update(entity);
             await _context.SaveChangesAsync();
-            return entity;
         }
 
         Task<TEntity?> IGenericRepository<TEntity>.Getir(int id)
@@ -36,10 +50,7 @@ namespace EnvanterUygulaması.Repositories.Concrete
             throw new NotImplementedException();
         }
 
-        Task IGenericRepository<TEntity>.Guncelle(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         Task IGenericRepository<TEntity>.TopluEkle(List<TEntity> entities)
         {
