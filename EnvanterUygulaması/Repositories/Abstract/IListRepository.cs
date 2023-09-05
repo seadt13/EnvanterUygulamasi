@@ -4,11 +4,15 @@ namespace EnvanterUygulaması.Repositories.Abstract
 {
     public interface IListRepository
     {
+        Task<List<Liste>> YazilimMarkaListesiGetir();
+        Task<List<Liste>> BulutListesiGetir();
+        Task<Bulutlar> BulutOzellikleriGetir(int SecilenBulutId);
+
         Task<List<Liste>> TurListesiGetir();
-        Task<List<Liste>> AltTurListesiGetir(int id);
-        Task<List<Liste>> MarkaListesiGetir();
-        Task<List<Liste>> UstModelListesiGetir(int id);
-        Task<List<Liste>> AltModelListesiGetir(int id);
+        Task<List<Liste>> AltTurListesiGetir(int TurId);
+        Task<List<Liste>> DonanimMarkaListesiGetir(int TurId);
+        Task<List<Liste>> UstModelListesiGetir(int MarkaId);
+        Task<List<Liste>> AltModelListesiGetir(int UstModelId);
         List<string> BolgeListe();
     }
 }

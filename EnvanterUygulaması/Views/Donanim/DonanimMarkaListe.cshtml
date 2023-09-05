@@ -1,0 +1,47 @@
+﻿@model List<EnvanterUygulaması.ViewModels.DonanimPanelVM>
+
+<div class="mt-5 align-items-center">
+    <h3 class="text-center">Donanım Marka Listesi</h3>
+</div>
+
+<div class="form-outline col-6">
+    <label class="form-label">Marka Adı:</label>
+    <input type="text" name="Ad" id="ad" class="form-control" />
+    <label id="mesaj"></label>
+    <input type="hidden" name="Id" id="id" value="0" />
+    <input type="hidden" name="guncelleSatirIndeks" id="guncelleSatirIndeks" value="0" />
+</div>
+
+<div class="mt-2 card table-responsive">
+
+    <table class="table table-striped" id="donanimMarkaTablo">
+        <thead>
+            <tr>
+                <th>İşlem</th>
+                <th>Marka Adı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var marka in Model)
+            {
+                <tr>
+                    <td>
+                        <a class="btn btn-primary markaGuncelle" data-id="@marka.id" data-ad="@marka.Adi">Güncelle</a>
+                    </td>
+                    <td>@marka.Adi</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#donanimMarkaTablo').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json',
+            }
+        });
+    });
+</script>

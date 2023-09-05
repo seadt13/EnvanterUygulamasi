@@ -26,7 +26,7 @@ namespace EnvanterUygulaması.ViewModels
 
         public string Durum { get; set; }
 
-        public string Birim { get; set; }
+        public int BolgeId { get; set; }
 
         public string? MacAdres { get; set; }
 
@@ -36,7 +36,7 @@ namespace EnvanterUygulaması.ViewModels
 
         public int GarantiSuresi { get; set; }
 
-        public bool? Poe { get; set; }
+        public bool Poe { get; set; }
         public string Aciklama { get; set; } 
 
         public int? BaglantiHizi { get; set; }

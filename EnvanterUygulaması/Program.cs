@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 builder.Services.AddTransient<IDonanimRepository, DonanimRepository>();
+builder.Services.AddTransient<IDonanimMarkaRepository, DonanimMarkaRepository>();
 builder.Services.AddTransient<IYazilimRepository, YazilimRepository>();
 builder.Services.AddTransient<IDevreRepository, DevreRepository>();
 builder.Services.AddTransient<IListRepository, ListRepository>();

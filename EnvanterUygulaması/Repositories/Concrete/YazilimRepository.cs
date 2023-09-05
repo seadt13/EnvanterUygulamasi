@@ -14,6 +14,11 @@ namespace EnvanterUygulaması.Repositories.Concrete
         {
             _context = context;
         }
+        public async Task<Yazilimlar?> GetirInclude(int id)
+        {
+            return await _context.Yazilimlar
+                .Include(y => y.yazilimMarkalari).Where(y=>y.id==id).FirstOrDefaultAsync();
+        }
 
         public async Task<List<Yazilimlar>> TumunuGetirInclude()
         {

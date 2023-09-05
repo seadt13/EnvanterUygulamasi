@@ -5,6 +5,7 @@ using EnvanterUygulaması.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using System;
 
 namespace EnvanterUygulaması.Controllers
@@ -13,11 +14,13 @@ namespace EnvanterUygulaması.Controllers
     {
         private readonly IDonanimRepository _donanimRepository;
         private readonly IListRepository _listRepository;
+        private readonly IDonanimMarkaRepository _donanimMarkaRepository;
 
-        public DonanimController(IDonanimRepository donanimRepository, IListRepository listRepository)
+        public DonanimController(IDonanimRepository donanimRepository, IListRepository listRepository, IDonanimMarkaRepository donanimMarkaRepository)
         {
             _listRepository = listRepository;
             _donanimRepository = donanimRepository;
+            _donanimMarkaRepository = donanimMarkaRepository;
         }
         
         public async Task<IActionResult> DonanimListe()
@@ -26,16 +29,16 @@ namespace EnvanterUygulaması.Controllers
             List<DonanimVM> donanimListesi = donanimlar.Select(x => new DonanimVM()
             {
                 Turu = x.donanimTurleri.Adi,
-                AltTuru=x.donanimAltTurleri.Adi,
-                Markasi=x.donanimMarkalari.Adi,
+                AltTuru = x.donanimAltTurleri != null ? x.donanimAltTurleri.Adi : null,
+                Markasi = x.donanimMarkalari.Adi,
                 UstModeli=x.ustModeller.Adi,
                 AltModeli=x.altModeller.Adi,
                 MacAdresi=x.MacAdresi,
                 SeriNo=x.SeriNo,
                 Durumu=x.Durumu,
                 Aciklama=x.Aciklama,
-                AlimTarihi=x.AlimTarihi,
-                Birimi=x.Birim,
+                AlimTarihi=x.AlimTarihi.ToShortDateString(),
+                BolgeId = x.BolgeId,
                 EkleyenKullanici=x.kullanicilar.Adi,
                 GarantiSuresi=x.GarantiSuresi,
                 Poe=x.Poe
@@ -46,12 +49,11 @@ namespace EnvanterUygulaması.Controllers
 
         public async Task<IActionResult> DonanimEkle(int id=0)
         {
-            DonanimEkleDuzenleVM donanimEkleDuzenleVM = new DonanimEkleDuzenleVM();
-            List<Liste> turList = await _listRepository.TurListesiGetir();
-            donanimEkleDuzenleVM.TurList = turList;
-            List<Liste> markaList =await _listRepository.MarkaListesiGetir();
-            donanimEkleDuzenleVM.MarkaList = markaList;
-
+            DonanimEkleDuzenleVM donanimEkleDuzenleVM = new DonanimEkleDuzenleVM()
+            {
+                AlimTarihi = DateTime.Now
+            };
+    
             if (id != 0)
             {
                 var donanim = await _donanimRepository.Getir(id);
@@ -76,10 +78,21 @@ namespace EnvanterUygulaması.Controllers
                     Poe = donanim.Poe,
                     Tip = donanim.Tipi,
                     SeriNo = donanim.SeriNo,
-                    Birim = donanim.Birim
+                    BolgeId = donanim.BolgeId,
+                    id=donanim.id
                 };
-
+                List<Liste> altTurList = await _listRepository.AltTurListesiGetir(donanim.DonanimTuruID);
+                List<Liste> markalist = await _listRepository.DonanimMarkaListesiGetir(donanim.DonanimTuruID);
+                List<Liste> ustModelList = await _listRepository.UstModelListesiGetir(donanim.DonanimMarkaID);
+                List<Liste> altModelList = await _listRepository.AltModelListesiGetir(donanim.UstModelID);
+                donanimEkleDuzenleVM.AltTurList = altTurList;
+                donanimEkleDuzenleVM.MarkaList = markalist;
+                donanimEkleDuzenleVM.UstModelList = ustModelList;
+                donanimEkleDuzenleVM.AltModelList = altModelList;
             }
+            List<Liste> turList = await _listRepository.TurListesiGetir();
+            donanimEkleDuzenleVM.TurList = turList;
+            
             return View(donanimEkleDuzenleVM);
         }
         [HttpPost]
@@ -100,7 +113,7 @@ namespace EnvanterUygulaması.Controllers
                         DonanimMarkaID = donanimEkleDuzenleVM.MarkaId,
                         MacAdresi = donanimEkleDuzenleVM.MacAdres,
                         BaglantiHizi = donanimEkleDuzenleVM.BaglantiHizi,
-                        Birim = donanimEkleDuzenleVM.Birim,
+                        BolgeId = donanimEkleDuzenleVM.BolgeId,
                         Durumu = donanimEkleDuzenleVM.Durum,
                         GarantiSuresi = donanimEkleDuzenleVM.GarantiSuresi,
                         Gucu = donanimEkleDuzenleVM.Guc,
@@ -130,7 +143,7 @@ namespace EnvanterUygulaması.Controllers
                         mevcutDonanim.DonanimMarkaID = donanimEkleDuzenleVM.MarkaId;
                         mevcutDonanim.MacAdresi = donanimEkleDuzenleVM.MacAdres;
                         mevcutDonanim.BaglantiHizi = donanimEkleDuzenleVM.BaglantiHizi;
-                        mevcutDonanim.Birim = donanimEkleDuzenleVM.Birim;
+                        mevcutDonanim.BolgeId = donanimEkleDuzenleVM.BolgeId;
                         mevcutDonanim.Durumu = donanimEkleDuzenleVM.Durum;
                         mevcutDonanim.GarantiSuresi = donanimEkleDuzenleVM.GarantiSuresi;
                         mevcutDonanim.Gucu = donanimEkleDuzenleVM.Guc;
@@ -145,7 +158,6 @@ namespace EnvanterUygulaması.Controllers
             }
             catch (Exception ex)
             {
-
                 // hata yakalama ve görüntüleme
                 TempData["HataMesaji"] = "Bir hata oluştu: " + ex.Message;
                 return View(donanimEkleDuzenleVM);
@@ -166,6 +178,7 @@ namespace EnvanterUygulaması.Controllers
             var donanimlar = await _donanimRepository.TumunuGetirInclude();
             List<DonanimVM> donanimListesi = donanimlar.Select(x => new DonanimVM()
             {
+                id = x.id,
                 Turu = x.donanimTurleri.Adi,
                 AltTuru =x.donanimAltTurleri!=null? x.donanimAltTurleri.Adi:null,
                 Markasi = x.donanimMarkalari.Adi,
@@ -175,14 +188,46 @@ namespace EnvanterUygulaması.Controllers
                 SeriNo = x.SeriNo,
                 Durumu = x.Durumu,
                 Aciklama = x.Aciklama,
-                AlimTarihi = x.AlimTarihi,
-                Birimi = x.Birim,
+                AlimTarihi = x.AlimTarihi.ToShortDateString(),
+                BolgeId = x.BolgeId,
                 EkleyenKullanici = x.kullanicilar.Adi,
                 GarantiSuresi = x.GarantiSuresi,
                 Poe = x.Poe
             }).ToList();
 
             return View(donanimListesi);
+        }
+
+        public async Task<IActionResult> MarkaListe()
+        {
+            var markalar = await _donanimMarkaRepository.TumunuGetir();
+            List<DonanimPanelVM> markaListeVM = markalar.Select(x => new DonanimPanelVM()
+            {
+                id = x.id,
+                Adi = x.Adi
+            }).ToList();
+            return View(markaListeVM);
+        }
+
+        public async Task<JsonResult?> DonanimMarkaEkleDuzenle(DonanimPanelVM donanimPanelVM)
+        {
+            DonanimMarkalari? markaEntity;
+            if(donanimPanelVM.id == 0)
+            {
+                markaEntity=new DonanimMarkalari { Adi= donanimPanelVM.Adi, Durumu="Aktif" };
+                var sonuc = await _donanimMarkaRepository.Ekle(markaEntity);
+                return Json(sonuc);
+            }
+            else
+            {
+                markaEntity = await _donanimMarkaRepository.Getir(donanimPanelVM.id);
+                if (markaEntity == null)
+                    return null;
+                markaEntity.Durumu = "Aktif";
+                markaEntity.Adi = donanimPanelVM.Adi;
+                await _donanimMarkaRepository.Guncelle(markaEntity);
+                return Json(markaEntity);
+            }
         }
         
     }

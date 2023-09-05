@@ -11,6 +11,7 @@
         public DateTime AlimTarihi{ get; set; }
         public int DestekSuresi{ get; set; }
         public string Aciklama{ get; set; }
+        public int BolgeId { get; set; }
         public string EkleyenKullanici{ get; set; }
     }
 }

@@ -13,7 +13,23 @@ namespace EnvanterUygulaması.Repositories.Concrete
         {
             _context = context;
         }
-
+        public async Task<List<Liste>> YazilimMarkaListesiGetir()
+        {
+            var markalar = await _context.YazilimMarkalari.ToListAsync();
+            var markaListesi = markalar.Select(x => new Liste { Adi = x.Adi, id = x.id }).ToList();
+            return markaListesi;
+        }
+        public async Task<List<Liste>> BulutListesiGetir()
+        {
+            var bulutlar = await _context.Bulutlar.ToListAsync();
+            var bulutlarListesi = bulutlar.Select(x => new Liste { Adi = x.Adi, id = x.id }).ToList();
+            return bulutlarListesi;
+        }
+        public async Task<Bulutlar> BulutOzellikleriGetir(int SecilenBulutId)
+        {
+            var bulut= await _context.Bulutlar.FirstOrDefaultAsync(b => b.id == SecilenBulutId);
+            return bulut;
+        }
         public async Task<List<Liste>> TurListesiGetir()
         {
             var turler = await _context.DonanimTurleri.ToListAsync();
@@ -27,9 +43,9 @@ namespace EnvanterUygulaması.Repositories.Concrete
             return altTurListesi;
         }
 
-        public async Task<List<Liste>> MarkaListesiGetir()
+        public async Task<List<Liste>> DonanimMarkaListesiGetir(int turId)
         {
-            var markalar = await _context.DonanimMarkalari.ToListAsync();
+            var markalar = await _context.DonanimMarkalari.Where(x => x.TurID == turId).ToListAsync();
             var markaListesi = markalar.Select(x => new Liste { Adi = x.Adi, id = x.id }).ToList();
             return markaListesi;
         }
@@ -45,10 +61,9 @@ namespace EnvanterUygulaması.Repositories.Concrete
             var altModelListesi = altModeller.Select(x=>new Liste { Adi=x.Adi,id = x.id}).ToList();
             return altModelListesi;
         }
-
-        public List<string> BolgeListe()
+        public  List<string> BolgeListe()
         {
-            List<string> items = new List<string>
+            List<string> bolgeler = new List<string>
             {
                 "1. Bölge Müdürlüğü | İstanbul",
                 "2. Bölge Müdürlüğü | İzmir",
@@ -64,11 +79,11 @@ namespace EnvanterUygulaması.Repositories.Concrete
                 "12. Bölge Müdürlüğü | Erzurum",
                 "13. Bölge Müdürlüğü | Antalya",
                 "14. Bölge Müdürlüğü | Bursa",
-                "15. Bölge Müdürlüğü| Kastamonu",
+                "15. Bölge Müdürlüğü | Kastamonu",
                 "16. Bölge Müdürlüğü | Sivas",
                 "18. Bölge Müdürlüğü | Kars"
             };
-            return items;
+            return bolgeler;
         }
     }
 }
