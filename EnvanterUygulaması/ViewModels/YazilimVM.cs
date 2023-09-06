@@ -8,10 +8,10 @@
         public string Versiyonu { get; set; }
         public string Turu { get; set; }
         public int CihazSayisi { get; set; }
-        public DateTime AlimTarihi{ get; set; }
+        public string AlimTarihi{ get; set; }
         public int DestekSuresi{ get; set; }
         public string Aciklama{ get; set; }
-        public int BolgeId { get; set; }
+        public string Bolge { get; set; }
         public string EkleyenKullanici{ get; set; }
     }
 }

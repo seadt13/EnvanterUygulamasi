@@ -14,6 +14,7 @@ namespace EnvanterUygulaması.Context
         public DbSet<Yazilimlar> Yazilimlar { get; set; }
         public DbSet<Donanimlar> Donanimlar { get; set; }
         public DbSet<DonanimMarkalari> DonanimMarkalari { get; set; }
+        public DbSet<DonanimMarkaTurleri> DonanimMarkaTurleri { get; set; }
         public DbSet<UstModeller> UstModeller { get; set; }
         public DbSet<AltModeller> AltModeller { get; set; }
         public DbSet<Bulutlar> Bulutlar { get; set; }

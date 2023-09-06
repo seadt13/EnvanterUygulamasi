@@ -26,21 +26,26 @@ namespace EnvanterUygulaması.Controllers
                 Markasi=x.yazilimMarkalari.Adi,
                 Aciklama=x.Aciklama,
                 Adi=x.Adi,
-                AlimTarihi=x.AlimTarihi,
-                CihazSayisi=x.CihazSayisi,
+                AlimTarihi=x.AlimTarihi.ToShortDateString(),
+                CihazSayisi =x.CihazSayisi,
                 DestekSuresi=x.DestekSuresi,
                 EkleyenKullanici=x.kullanicilar.Adi,
                 Turu=x.Turu,
                 Versiyonu=x.Versiyon,
-                BolgeId = x.BolgeId         
+                Bolge = x.bolgeler.Adi         
             }).ToList();
             return View(yazilimListesi);
         }
         public async Task<IActionResult> YazilimEkle(int id = 0)
         {
-            YazilimEkleDuzenleVM yazilimEkleDuzenleVM = new YazilimEkleDuzenleVM();
+            YazilimEkleDuzenleVM yazilimEkleDuzenleVM = new YazilimEkleDuzenleVM()
+            {
+                AlimTarihi = DateTime.Now
+            };
             List<Liste> markaList = await _listRepository.YazilimMarkaListesiGetir();
             yazilimEkleDuzenleVM.MarkaList = markaList;
+            List<Liste> bolgeList = await _listRepository.BolgeListesiGetir();
+            yazilimEkleDuzenleVM.BolgeList = bolgeList;
             if (id != 0)
             {
                 var yazilim = await _yazilimRepository.Getir(id);
@@ -62,6 +67,7 @@ namespace EnvanterUygulaması.Controllers
                     id= yazilim.id
                 };
                 yazilimEkleDuzenleVM.MarkaList = markaList;
+                yazilimEkleDuzenleVM.BolgeList = bolgeList;
             }
 
             return View(yazilimEkleDuzenleVM);
@@ -127,14 +133,14 @@ namespace EnvanterUygulaması.Controllers
                 Markasi = x.yazilimMarkalari.Adi,
                 Aciklama = x.Aciklama,
                 Adi = x.Adi,
-                AlimTarihi = x.AlimTarihi,
+                AlimTarihi = x.AlimTarihi.ToShortDateString(),
                 CihazSayisi = x.CihazSayisi,
                 DestekSuresi = x.DestekSuresi,
                 EkleyenKullanici = x.kullanicilar.Adi,
                 Turu = x.Turu,
                 Versiyonu = x.Versiyon,
-                BolgeId = x.BolgeId,
-                id=x.id
+                Bolge = x.bolgeler.Adi,
+                id =x.id
             }).ToList();
             return View(yazilimListesi);
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mwKox5PgRjMM/PZYDQdv7+zR6bn8KBV4HTP9CwA/cP4hOg9BZfyyC+6m8Ob5idN9W9uX2waoXjyee8JHHVj2cA==",
+  "dgSpecHash": "eabBlb96niIWwq07YTaewcVg9/v4mYz3wlwIztmJBA2/53AaJrw9IJSlK8ElqNDcxFSusYio6wdSebAmivPLYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sedat\\Desktop\\proje132\\EnvanterUygulaması\\EnvanterUygulaması.csproj",
+  "projectFilePath": "C:\\Users\\sedat\\Desktop\\projeeee\\EnvanterUygulaması\\EnvanterUygulaması.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sedat\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\sedat\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

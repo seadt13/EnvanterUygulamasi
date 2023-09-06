@@ -25,6 +25,7 @@ namespace EnvanterUygulaması.Repositories.Concrete
             var yazilimList = await _context.Yazilimlar
                 .Include(y => y.yazilimMarkalari)
                 .Include(y => y.kullanicilar)
+                .Include(y=>y.bolgeler)
                 .ToListAsync();
             return yazilimList;
         }

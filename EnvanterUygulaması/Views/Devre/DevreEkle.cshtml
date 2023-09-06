@@ -3,7 +3,7 @@
 <div class="mt-5">
     <h3 class="text-center">Devre Ekle Düzenle</h3>
 </div>
-<div class="custom-container mt-5">
+<div class="mt-5">
 
     
     <form asp-controller="devre" asp-action="DevreEkle" method="post">
@@ -14,13 +14,13 @@
                 <input asp-for="Adi" type="text" class="form-control">
             </div>
             <div class="col-md-4">
-                <label asp-for="BolgeId" for="bolgeSelect">Bölge:</label>
-                @Html.DropDownListFor(model=> model.BolgeId, new SelectList(Model.BulutList,"id","Adi"),"Bölge Adı Seçiniz",
-                new { @class= "form-select", @id="BolgeDD",name="BolgeId"})
+                <label asp-for="BolgeId">Bölge:</label>
+                @Html.DropDownListFor(model => model.BolgeId, new SelectList(Model.BolgeList, "id", "Adi"),"Bölge seçiniz",
+                new { @class = "form-select", @id="BolgeDD",name="BolgeId"})
             </div>
             <div class="col-md-4">
                 <label asp-for="DevreNo">Devre No:</label>
-                <input asp-for="DevreNo" type="text" class="form-control">
+                <input asp-for="DevreNo" type="number" class="form-control">
             </div>
         </div>
 
@@ -43,7 +43,8 @@
         <div class="row mt-3">
             <div class="col-md-4">
                 <label asp-for="IpBlogu">Ip Bloğu:</label>
-                <input asp-for="IpBlogu" type="text" class="form-control">
+                <input asp-for="IpBlogu" type="text" class="form-control" pattern="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(1\d|2\d|3[0-2])$"
+                       data-toggle="tooltip" data-placement="top" title="Örnek: 192.168.125.130/26">
             </div>
 
             <div class="col-md-4">
@@ -76,8 +77,9 @@
         </div>
 
         <div class="row mt-3">
-            <div class="col-md-12 d-flex justify-content-between">
-                <button type="button" class="btn btn-danger">Vazgeç</button>
+            <div class="col-md-12 d-flex justify-content-end">
+                <a href="/Devre/EkledigimDevreler" type="button" class="btn btn-danger">Vazgeç</a>
+                &ensp;
                 <button type="submit" class="btn btn-primary">Kaydet</button>
             </div>
         </div>

@@ -17,7 +17,7 @@ namespace EnvanterUygulaması.ViewModels
         public int GarantiSuresi { get; set; }
         public bool Poe { get; set; }
         public string Aciklama { get; set; }
-        public int BolgeId { get; set; }
+        public string Bolge { get; set; }
         public string EkleyenKullanici { get; set; }
 
         public List<Liste> MarkaList { get; set; }

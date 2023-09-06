@@ -6,6 +6,7 @@ namespace EnvanterUygulaması.Repositories.Abstract
     {
         Task<List<Liste>> YazilimMarkaListesiGetir();
         Task<List<Liste>> BulutListesiGetir();
+        Task<List<Liste>> BolgeListesiGetir();
         Task<Bulutlar> BulutOzellikleriGetir(int SecilenBulutId);
 
         Task<List<Liste>> TurListesiGetir();
@@ -13,6 +14,5 @@ namespace EnvanterUygulaması.Repositories.Abstract
         Task<List<Liste>> DonanimMarkaListesiGetir(int TurId);
         Task<List<Liste>> UstModelListesiGetir(int MarkaId);
         Task<List<Liste>> AltModelListesiGetir(int UstModelId);
-        List<string> BolgeListe();
     }
 }

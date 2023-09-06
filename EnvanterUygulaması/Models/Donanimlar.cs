@@ -19,7 +19,6 @@ namespace EnvanterUygulaması.Models
         public bool Poe { get; set; }
         public int? BaglantiHizi { get; set; }
         public string? Modu { get; set; }
-        public string? Tipi { get; set; } 
         public string? Gucu { get; set; } 
         public int BolgeId { get; set; }
         public string Aciklama { get; set; }

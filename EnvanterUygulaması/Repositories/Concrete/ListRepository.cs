@@ -13,6 +13,12 @@ namespace EnvanterUygulaması.Repositories.Concrete
         {
             _context = context;
         }
+        public async Task<List<Liste>>BolgeListesiGetir()
+        {
+            var bolgeler = await _context.Bolgeler.ToListAsync();
+            var bolgeListesi = bolgeler.Select(x => new Liste { Adi = x.Adi, id = x.id }).ToList();
+            return bolgeListesi;
+        }
         public async Task<List<Liste>> YazilimMarkaListesiGetir()
         {
             var markalar = await _context.YazilimMarkalari.ToListAsync();
@@ -45,8 +51,8 @@ namespace EnvanterUygulaması.Repositories.Concrete
 
         public async Task<List<Liste>> DonanimMarkaListesiGetir(int turId)
         {
-            var markalar = await _context.DonanimMarkalari.Where(x => x.TurID == turId).ToListAsync();
-            var markaListesi = markalar.Select(x => new Liste { Adi = x.Adi, id = x.id }).ToList();
+            var markalar = await _context.DonanimMarkaTurleri.Include(x=>x.donanimMarkalari).Where(x => x.TurId == turId).ToListAsync();
+            var markaListesi = markalar.Select(x => new Liste { Adi = x.donanimMarkalari.Adi, id = x.donanimMarkalari.id }).ToList();
             return markaListesi;
         }
         public async Task<List<Liste>> UstModelListesiGetir(int markaId)
@@ -61,29 +67,6 @@ namespace EnvanterUygulaması.Repositories.Concrete
             var altModelListesi = altModeller.Select(x=>new Liste { Adi=x.Adi,id = x.id}).ToList();
             return altModelListesi;
         }
-        public  List<string> BolgeListe()
-        {
-            List<string> bolgeler = new List<string>
-            {
-                "1. Bölge Müdürlüğü | İstanbul",
-                "2. Bölge Müdürlüğü | İzmir",
-                "3. Bölge Müdürlüğü | Konya",
-                "4. Bölge Müdürlüğü | Ankara",
-                "5. Bölge Müdürlüğü | Mersin",
-                "6. Bölge Müdürlüğü | Kayseri",
-                "7. Bölge Müdürlüğü | Samsun",
-                "8. Bölge Müdürlüğü | Elazığ",
-                "9. Bölge Müdürlüğü | Diyarbakır",
-                "10. Bölge Müdürlüğü | Trabzon",
-                "11. Bölge Müdürlüğü | Van",
-                "12. Bölge Müdürlüğü | Erzurum",
-                "13. Bölge Müdürlüğü | Antalya",
-                "14. Bölge Müdürlüğü | Bursa",
-                "15. Bölge Müdürlüğü | Kastamonu",
-                "16. Bölge Müdürlüğü | Sivas",
-                "18. Bölge Müdürlüğü | Kars"
-            };
-            return bolgeler;
-        }
+       
     }
 }

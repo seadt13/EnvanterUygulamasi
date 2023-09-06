@@ -3,7 +3,7 @@
 <div class="mt-5 align-items-center">
     <h3 class="text-center">Eklediğim Donanımlar</h3>
     
-    <a href="#" class="link-underline-primary float-end">Detaylı Arama</a>
+    <a href="#" class="link-underline-primary float-end">Filtrele</a>
 </div>
 
 <button id="redirectButton" class="btn btn-primary" href="/Donanim/DonanimEkle@0">Donanım Ekle</button>
@@ -31,17 +31,24 @@
               <th>Poe</th>
               <th>Ekleyen Kullanıcı</th>
               <th>Açıklama</th>
-              <th>Birim</th>
+              <th>Bölge</th>
             </tr>
           </thead>
          <tbody>
                      @foreach (var item in Model)
                     {
                     <tr>
-                        <td class="custom-container">
-                            <a class="btn btn-primary" style="height: 35px; width: 85px;" href="/donanim/donanimekle/@item.id">Düzenle</a>
-                            &ensp;
-                            <a class="btn btn-danger" style="height: 35px; width: 85px;"href="/donanim/donanimkaldir/@item.id">Kaldır</a>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <a class="btn btn-primary" style="height: 35px; width: 85px;" href="/donanim/donanimekle/@item.id">Düzenle</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger" style="height: 35px; width: 85px;" href="/donanim/donanimkaldir/@item.id">Kaldır</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                         <td>@item.Turu</td>
                         <td>@item.AltTuru</td>
@@ -57,13 +64,17 @@
                         {
                             <td>Var</td>
                         }
+                        else if(item.Poe==false)
+                        {
+                        <td>Yok</td>
+                        }
                         else
                         {
-                            <td>Yok</td>
+                            <td></td>
                         }
-                        <td>@item.EkleyenKullanici</td>
+                    <td>@item.EkleyenKullanici</td>
                         <td>@item.Aciklama</td>
-                        <td>@item.Birimi</td>
+                        <td>@item.Bolge</td>
                     </tr>
                     }
          </tbody>

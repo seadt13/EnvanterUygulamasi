@@ -27,7 +27,7 @@ namespace EnvanterUygulaması.Controllers
                 Adi = x.Adi,
                 AnaDevreNo = x.bulutlar.AnaDevreNo,
                 BulutAdi = x.bulutlar.Adi,
-                BolgeId = x.BolgeId,
+                Bolge = x.bolgeler.Adi,
                 BulutID = x.BulutID,
                 Durumu = x.Durumu,
                 EkleyenKullanici = x.kullanicilar.Adi,
@@ -46,6 +46,8 @@ namespace EnvanterUygulaması.Controllers
             DevreEkleDüzenleVM devreEkleDüzenleVM = new DevreEkleDüzenleVM();
             List<Liste> BulutList = await _listRepository.BulutListesiGetir();
             devreEkleDüzenleVM.BulutList = BulutList;
+            List<Liste> BolgeList = await _listRepository.BolgeListesiGetir();
+            devreEkleDüzenleVM.BolgeList = BolgeList;
             if (id != 0)
             {
                 var devre = await _devreRepository.Getir(id);
@@ -69,6 +71,7 @@ namespace EnvanterUygulaması.Controllers
 
                 };
                 devreEkleDüzenleVM.BulutList = BulutList;
+                devreEkleDüzenleVM.BolgeList = BolgeList;
             }
             return View(devreEkleDüzenleVM);
         }
@@ -136,7 +139,7 @@ namespace EnvanterUygulaması.Controllers
                 Adi = x.Adi,
                 AnaDevreNo = x.bulutlar.AnaDevreNo,
                 BulutAdi = x.bulutlar.Adi,
-                BolgeId = x.BolgeId,
+                Bolge = x.bolgeler.Adi,
                 BulutID = x.BulutID,
                 Durumu = x.Durumu,
                 EkleyenKullanici = x.kullanicilar.Adi,

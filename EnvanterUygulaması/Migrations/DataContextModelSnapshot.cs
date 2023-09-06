@@ -68,6 +68,23 @@ namespace EnvanterUygulaması.Migrations
                     b.ToTable("Bildirimler");
                 });
 
+            modelBuilder.Entity("EnvanterUygulaması.Models.Bolgeler", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("Adi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Bolgeler");
+                });
+
             modelBuilder.Entity("EnvanterUygulaması.Models.Bulutlar", b =>
                 {
                     b.Property<int>("id")
@@ -102,9 +119,8 @@ namespace EnvanterUygulaması.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Bolge")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("BolgeId")
+                        .HasColumnType("int");
 
                     b.Property<int>("BulutID")
                         .HasColumnType("int");
@@ -131,6 +147,8 @@ namespace EnvanterUygulaması.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("id");
+
+                    b.HasIndex("BolgeId");
 
                     b.HasIndex("BulutID");
 
@@ -196,9 +214,6 @@ namespace EnvanterUygulaması.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TurID")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
 
                     b.ToTable("DonanimMarkalari");
@@ -246,9 +261,8 @@ namespace EnvanterUygulaması.Migrations
                     b.Property<int?>("BaglantiHizi")
                         .HasColumnType("int");
 
-                    b.Property<string>("Birim")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("BolgeId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("DonanimAltTuruID")
                         .HasColumnType("int");
@@ -285,15 +299,14 @@ namespace EnvanterUygulaması.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Tipi")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("UstModelID")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
                     b.HasIndex("AltModelID");
+
+                    b.HasIndex("BolgeId");
 
                     b.HasIndex("DonanimAltTuruID");
 
@@ -427,9 +440,8 @@ namespace EnvanterUygulaması.Migrations
                     b.Property<DateTime>("AlimTarihi")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Birim")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("BolgeId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CihazSayisi")
                         .HasColumnType("int");
@@ -452,6 +464,8 @@ namespace EnvanterUygulaması.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("id");
+
+                    b.HasIndex("BolgeId");
 
                     b.HasIndex("EkleyenID");
 
@@ -493,6 +507,12 @@ namespace EnvanterUygulaması.Migrations
 
             modelBuilder.Entity("EnvanterUygulaması.Models.Devreler", b =>
                 {
+                    b.HasOne("EnvanterUygulaması.Models.Bolgeler", "bolgeler")
+                        .WithMany("devreler")
+                        .HasForeignKey("BolgeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EnvanterUygulaması.Models.Bulutlar", "bulutlar")
                         .WithMany("devreler")
                         .HasForeignKey("BulutID")
@@ -504,6 +524,8 @@ namespace EnvanterUygulaması.Migrations
                         .HasForeignKey("EkleyenID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("bolgeler");
 
                     b.Navigation("bulutlar");
 
@@ -548,6 +570,12 @@ namespace EnvanterUygulaması.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("EnvanterUygulaması.Models.Bolgeler", "bolgeler")
+                        .WithMany("donanimlar")
+                        .HasForeignKey("BolgeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EnvanterUygulaması.Models.DonanimAltTurleri", "donanimAltTurleri")
                         .WithMany("donanimlar")
                         .HasForeignKey("DonanimAltTuruID");
@@ -577,6 +605,8 @@ namespace EnvanterUygulaması.Migrations
                         .IsRequired();
 
                     b.Navigation("altModeller");
+
+                    b.Navigation("bolgeler");
 
                     b.Navigation("donanimAltTurleri");
 
@@ -621,6 +651,12 @@ namespace EnvanterUygulaması.Migrations
 
             modelBuilder.Entity("EnvanterUygulaması.Models.Yazilimlar", b =>
                 {
+                    b.HasOne("EnvanterUygulaması.Models.Bolgeler", "bolgeler")
+                        .WithMany("yazilimlar")
+                        .HasForeignKey("BolgeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EnvanterUygulaması.Models.Kullanicilar", "kullanicilar")
                         .WithMany("yazilimlar")
                         .HasForeignKey("EkleyenID")
@@ -633,6 +669,8 @@ namespace EnvanterUygulaması.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("bolgeler");
+
                     b.Navigation("kullanicilar");
 
                     b.Navigation("yazilimMarkalari");
@@ -641,6 +679,15 @@ namespace EnvanterUygulaması.Migrations
             modelBuilder.Entity("EnvanterUygulaması.Models.AltModeller", b =>
                 {
                     b.Navigation("donanimlar");
+                });
+
+            modelBuilder.Entity("EnvanterUygulaması.Models.Bolgeler", b =>
+                {
+                    b.Navigation("devreler");
+
+                    b.Navigation("donanimlar");
+
+                    b.Navigation("yazilimlar");
                 });
 
             modelBuilder.Entity("EnvanterUygulaması.Models.Bulutlar", b =>

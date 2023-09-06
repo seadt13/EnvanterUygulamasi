@@ -5,7 +5,7 @@
         public int id { get; set; }
         public string Adi { get; set; }
         public int Nosu { get; set; }
-        public int BolgeId { get; set; }
+        public string Bolge { get; set; }
         public int BulutID { get; set; }
         public string BulutAdi { get; set; }
         public string AnaDevreNo { get; set; }
