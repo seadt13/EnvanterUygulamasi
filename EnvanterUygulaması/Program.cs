@@ -13,7 +13,9 @@ builder.Services.AddTransient<IDonanimTurRepository, DonanimTurRepository>();
 builder.Services.AddTransient<IDonanimMarkaRepository, DonanimMarkaRepository>();
 builder.Services.AddTransient<IDonanimMarkaTurRepository, DonanimMarkaTurRepository>();
 builder.Services.AddTransient<IYazilimRepository, YazilimRepository>();
+builder.Services.AddTransient<IYazilimMarkaRepository, YazilimMarkaRepository>();
 builder.Services.AddTransient<IDevreRepository, DevreRepository>();
+builder.Services.AddTransient<IBulutRepository, BulutRepository>();
 builder.Services.AddTransient<IListRepository, ListRepository>();
 
 // DbContext yapýlandýrmasýný ekle
@@ -41,6 +43,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=User}/{action=Login}/{id?}");
 
 app.Run();

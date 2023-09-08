@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dpXL7u36d45m1frsw86HAInT6CdQGAWf136X9k/UHhg=",
+  "Hash": "5hzjspOnWMmmfTdPzgD2Ck6wOkNfsn21EMNiorxq+5Q=",
   "Source": "EnvanterUygulaması",
   "BasePath": "_content/EnvanterUygulaması",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\donanim.css"
+    },
+    {
+      "Identity": "C:\\Users\\sedat\\Desktop\\projeeee\\EnvanterUygulaması\\wwwroot\\css\\login.css",
+      "SourceId": "EnvanterUygulaması",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sedat\\Desktop\\projeeee\\EnvanterUygulaması\\wwwroot\\",
+      "BasePath": "_content/EnvanterUygulaması",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
       "Identity": "C:\\Users\\sedat\\Desktop\\projeeee\\EnvanterUygulaması\\wwwroot\\css\\site.css",

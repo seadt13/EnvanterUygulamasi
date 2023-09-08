@@ -235,13 +235,15 @@ namespace EnvanterUygulaması.Controllers
         public async Task<JsonResult?> DonanimMarkaEkleDuzenle(DonanimPanelVM donanimPanelVM)
         {
             DonanimMarkalari? markaEntity;
-            if(donanimPanelVM.id == 0)
-            {
-                DonanimMarkaTurleri donanimMarkaTurleri = new DonanimMarkaTurleri() { TurId= (int)donanimPanelVM.TurId,MarkaId=donanimPanelVM.id};
-                markaEntity =new DonanimMarkalari { Adi= donanimPanelVM.Adi, Durumu="Aktif" };
-                donanimMarkaTurleri.donanimMarkalari = markaEntity;
+            DonanimMarkaTurleri donanimMarkaTurleri;
+            if (donanimPanelVM.id == 0)
+            {   
+                markaEntity = new DonanimMarkalari { Adi = donanimPanelVM.Adi, Durumu = "Aktif" };
+                donanimMarkaTurleri = new DonanimMarkaTurleri() { TurId= donanimPanelVM.TurId.Value,donanimMarkalari=markaEntity};
                 var sonuc = await _donanimMarkaTurRepository.Ekle(donanimMarkaTurleri);
-                return Json(sonuc);
+                var vm =await _donanimMarkaTurRepository.GetirInclude(markaId: sonuc.MarkaId, turId: sonuc.TurId);
+
+                return Json(new DonanimPanelVM { Adi=vm.donanimMarkalari.Adi,id=vm.MarkaId,TurAdi=vm.donanimTurleri.Adi});
             }
             else
             {
@@ -250,7 +252,9 @@ namespace EnvanterUygulaması.Controllers
                     return null;
                 markaEntity.Durumu = "Aktif";
                 markaEntity.Adi = donanimPanelVM.Adi;
-                await _donanimMarkaRepository.Guncelle(markaEntity);
+
+                //donanimMarkaTurleri= await _donanimMarkaTurRepository.GetirInclude(markaId: )
+                //await _donanimMarkaRepository.Guncelle(markaEntity);
                 return Json(markaEntity);
             }
         }
